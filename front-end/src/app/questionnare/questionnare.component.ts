@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseService } from '../response.service';
-import { Response } from '../../../node_modules/@angular/http';
+import { ResponseService } from '../http.service';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-questionnare',
@@ -18,9 +18,12 @@ export class QuestionnareComponent implements OnInit {
         this.json = response.json();
     });
   }
-
+  bob(input) {
+    console.log('completed!');
+  }
    // needed for survey editing function (JM thinks)
    onSurveySaved(survey) {
-    this.json = survey;
+     console.log('onsurveysaved');
+    // this.json = survey;
   }
 }

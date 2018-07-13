@@ -8,7 +8,7 @@ import { SurveyComponent } from './survey.component';
 import { SurveyEditorComponent } from './survey.editor.component';
 import { QuestionnareComponent } from './questionnare/questionnare.component';
 import { LoginComponent } from './login/login.component';
-import { ResponseService } from './response.service';
+import { ResponseService } from './http.service';
 
 @NgModule({
   declarations: [

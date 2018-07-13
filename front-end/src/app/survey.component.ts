@@ -3,6 +3,7 @@ import * as Survey from "survey-angular";
 import * as widgets from "surveyjs-widgets";
 
 import "inputmask/dist/inputmask/phone-codes/phone.js";
+import { sendRequest } from "selenium-webdriver/http";
 
 widgets.icheck(Survey);
 widgets.select2(Survey);
@@ -49,7 +50,8 @@ export class SurveyComponent {
       header.appendChild(btn);
     });
     Survey.SurveyNG.render("surveyElement", { model: surveyModel });
+    surveyModel.onComplete.add((sender, options) => console.log(sender.data));
   }
-
+  
   ngOnInit() {}
 }
