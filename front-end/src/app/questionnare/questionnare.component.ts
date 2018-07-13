@@ -122,6 +122,8 @@ export class QuestionnareComponent{
     ],
     "showProgressBar": "bottom bg-info"
    }
+
+   // needed for survey editing function (JM thinks)
    onSurveySaved(survey) {
     this.json = survey;
   }
