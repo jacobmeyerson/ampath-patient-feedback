@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseService } from '../http.service';
+import { HttpService } from '../http.service';
 import { Response } from '@angular/http';
 
 @Component({
@@ -10,10 +10,10 @@ import { Response } from '@angular/http';
 export class QuestionnareComponent implements OnInit {
   json: JSON;
 
-  constructor(private responseService: ResponseService) {}
+  constructor(private httpService: HttpService) {}
 
   ngOnInit() {
-    this.responseService.getSurveys().subscribe(
+    this.httpService.getSurveys().subscribe(
       (response: Response) => {
         this.json = response.json();
     });

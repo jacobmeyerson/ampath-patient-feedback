@@ -8,7 +8,7 @@ import { SurveyComponent } from './survey.component';
 import { SurveyEditorComponent } from './survey.editor.component';
 import { QuestionnareComponent } from './questionnare/questionnare.component';
 import { LoginComponent } from './login/login.component';
-import { ResponseService } from './http.service';
+import { HttpService } from './http.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { ResponseService } from './http.service';
     FormsModule,
     HttpModule
   ],
-  providers: [ResponseService],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
