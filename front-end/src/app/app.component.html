@@ -1,0 +1,6 @@
+<app-login
+(loggedInComplete)="loggedIn=true"
+*ngIf="!loggedIn">
+</app-login>
+<app-questionnare *ngIf="loggedIn"></app-questionnare>
+
