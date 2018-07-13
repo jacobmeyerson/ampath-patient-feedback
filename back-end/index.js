@@ -60,6 +60,15 @@ const server = Hapi.Server({
   }
 });
 
+server.route({
+  method: 'GET',
+  path: '/getSurveys',
+  handler: function(request, h) {   
+    return h.file('./surveys.json');
+  }
+});
+
+
 // connection.connect();
 
 // server.route({
@@ -133,6 +142,10 @@ const server = Hapi.Server({
 
 
 const init = async () => {
+  await server.register({
+    plugin: require('inert')
+  });
+
   // await server.register({
   //   plugin: require('hapi-auth-basic')
   // });
