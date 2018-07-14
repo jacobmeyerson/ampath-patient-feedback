@@ -49,6 +49,8 @@ export class SurveyComponent {
       header.appendChild(btn);
     });
     Survey.SurveyNG.render("surveyElement", { model: surveyModel });
+    surveyModel.onComplete.add((sender, options) => console.log(sender.data));
+
   }
 
   ngOnInit() {}
