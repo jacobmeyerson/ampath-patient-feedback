@@ -72,7 +72,12 @@ server.route({
   method: 'POST',
   path: '/storeSurveys',
   handler: function(request, h) {   
-    console.log(request.payload);
+    console.log(request.payload.question1);
+    console.log(typeof(request.payload.question1));
+
+    console.log(request.payload.question2.toString());
+    console.log(typeof(request.payload.question2.toString()));
+
     return 'stored'
   }
 });
