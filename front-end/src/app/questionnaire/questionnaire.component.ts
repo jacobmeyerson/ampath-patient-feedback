@@ -20,7 +20,14 @@ export class QuestionnaireComponent implements OnInit {
   }
 
   onSurveyDone(response) {
-    console.log('QUESTIONNAIRE COMPONENT', response);
+    console.log('completed');
+    this.httpService.storeSurveys(response).subscribe();
+    //   (res: Response) => {
+    //     console.log(res);
+    // });
+  }
+;
+    // console.log('QUESTIONNAIRE COMPONENT', response);
   }
 
   // needed for survey editing function (JM thinks)

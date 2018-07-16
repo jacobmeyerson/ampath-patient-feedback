@@ -63,12 +63,19 @@ const server = Hapi.Server({
 server.route({
   method: 'GET',
   path: '/getSurveys',
-  handler: function(request, h) {   
+  handler: function(request, h) { 
     return h.file('./surveys.json');
   }
 });
 
-
+server.route({
+  method: 'POST',
+  path: '/storeSurveys',
+  handler: function(request, h) {   
+    console.log(request.payload);
+    return 'stored'
+  }
+});
 // connection.connect();
 
 // server.route({

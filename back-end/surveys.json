@@ -10,10 +10,10 @@
         "isRequired": "true",
         "choices": [
          "Male",
-         "Female",
+         "Female"
         ]
        }
       ]
      }
     ]
-  };
+  }
