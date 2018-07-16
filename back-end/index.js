@@ -2,7 +2,7 @@
 
 // const Bcrypt = require('bcrypt');
 const Hapi = require('hapi');
-// const mysql = require('mysql');
+const mysql = require('mysql');
 // const request = require('request');
 
 // local storage of fetched locations and programs
@@ -45,12 +45,12 @@ const Hapi = require('hapi');
 // };
 
 
-// const connection = mysql.createConnection({
-//   host     : 'localhost',
-//   user     : 'root',
-//   password : 'jacob922',
-//   database : 'hapi'
-// });
+const connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'jacob922',
+  database : 'patient_feedback'
+});
 
 const server = Hapi.Server({
   port: 3000,
@@ -59,6 +59,7 @@ const server = Hapi.Server({
     cors: true
   }
 });
+
 
 server.route({
   method: 'GET',
@@ -78,11 +79,21 @@ server.route({
     console.log(request.payload.question2.toString());
     console.log(typeof(request.payload.question2.toString()));
 
-    return 'stored'
+    return new Promise(
+      (resolve, reject) => {
+        connection.query(
+          `SELECT * FROM responses;`,
+          (error, rows, fields) => {
+            if (error) {console.log('ERROR'); reject(error)}
+            else console.log(rows) // resolve(rows)
+          });
+      }
+    );
+
+    // return 'stored'; (error, rows, fields) => if (error) throw error; 
   }
 });
 
-// connection.connect();
 
 // server.route({
 //   method: 'GET',
@@ -155,6 +166,8 @@ server.route({
 
 
 const init = async () => {
+  connection.connect();
+
   await server.register({
     plugin: require('inert')
   });
@@ -175,8 +188,8 @@ const init = async () => {
 init();
 
 // Upon ctrl-c, mysql connection is closed, and server is shut down.
-// process.on('SIGINT', () => {
-//   connection.end();
-//   process.exit();
-// });
+process.on('SIGINT', () => {
+  connection.end();
+  process.exit();
+});
 
