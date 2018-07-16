@@ -29,7 +29,7 @@ Survey.JsonObject.metaData.addProperty("page", "popupdescription:text");
 })
 export class SurveyComponent {
   // added by JM
-  @Output() onCompleteClicked = new EventEmitter<string>();
+  @Output() onCompleteClicked = new EventEmitter<{}>();
 
   @Input()
   set json(value: object) {
@@ -56,8 +56,8 @@ export class SurveyComponent {
 
     // added by JM
     surveyModel.onComplete.add((sender, options) => {
-      console.log(sender.data);
-      this.onCompleteClicked.emit('SURVEY COMPONENT EVENT');
+      console.log(typeof(sender.data));
+      this.onCompleteClicked.emit(sender.data);
     });
   }
 

@@ -22,6 +22,7 @@ export class QuestionnareComponent implements OnInit {
   onSurveyDone(input) {
     console.log('QUESTIONNAIRE COMPONENT', input)
   }
+
    // needed for survey editing function (JM thinks)
   //  onSurveySaved(survey) {
   //    console.log('onsurveysaved');
