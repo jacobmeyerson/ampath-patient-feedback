@@ -18,12 +18,10 @@ export class QuestionnareComponent implements OnInit {
         this.json = response.json();
     });
   }
-  bob(input) {
-    console.log('completed!');
-  }
+
    // needed for survey editing function (JM thinks)
-   onSurveySaved(survey) {
-     console.log('onsurveysaved');
-    // this.json = survey;
-  }
+  //  onSurveySaved(survey) {
+  //    console.log('onsurveysaved');
+  //   // this.json = survey;
+  // }
 }
