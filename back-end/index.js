@@ -82,10 +82,10 @@ server.route({
     return new Promise(
       (resolve, reject) => {
         connection.query(
-          `SELECT * FROM responses;`,
+          `INSERT INTO responses (rating, reasons) VALUES (900, 'viv');`,
           (error, rows, fields) => {
             if (error) {console.log('ERROR'); reject(error)}
-            else console.log(rows) // resolve(rows)
+            else console.log(rows[0]) // resolve(rows)
           });
       }
     );
