@@ -28,18 +28,13 @@ Survey.JsonObject.metaData.addProperty("page", "popupdescription:text");
   template: `<div class="survey-container contentcontainer codecontainer"><div id="surveyElement"></div></div>`
 })
 export class SurveyComponent {
-  surveyModel;
-
   // added by JM
   @Output() onCompleteClicked = new EventEmitter<string>();
 
-
   @Input()
-
-
   set json(value: object) {
-    this.surveyModel = new Survey.Model(value);
-    this.surveyModel.onAfterRenderQuestion.add((survey, options) => {
+    const surveyModel = new Survey.Model(value);
+    surveyModel.onAfterRenderQuestion.add((survey, options) => {
       if (!options.question.popupdescription) return;
 
       //Add a button;
@@ -57,14 +52,13 @@ export class SurveyComponent {
       header.appendChild(span);
       header.appendChild(btn);
     });
-    Survey.SurveyNG.render("surveyElement", { model: this.surveyModel });
+    Survey.SurveyNG.render("surveyElement", { model: surveyModel });
 
     // added by JM
-    this.surveyModel.onComplete.add((sender, options) => {
+    surveyModel.onComplete.add((sender, options) => {
       console.log(sender.data);
-      // this.onCompleteClicked.emit('SURVEY COMPONENT EVENT');
+      this.onCompleteClicked.emit('SURVEY COMPONENT EVENT');
     });
-    // TODO: output onCompleteClicked event; emit sender.data upon onComplete
   }
 
 
