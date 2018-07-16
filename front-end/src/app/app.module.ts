@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { SurveyComponent } from './survey.component';
 import { SurveyEditorComponent } from './survey.editor.component';
-import { QuestionnareComponent } from './questionnare/questionnare.component';
+import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 import { LoginComponent } from './login/login.component';
 import { HttpService } from './http.service';
 
@@ -15,7 +15,7 @@ import { HttpService } from './http.service';
     AppComponent,
     SurveyComponent,
     SurveyEditorComponent,
-    QuestionnareComponent,
+    QuestionnaireComponent,
     LoginComponent
   ],
   imports: [

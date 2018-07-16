@@ -56,7 +56,6 @@ export class SurveyComponent {
 
     // added by JM
     surveyModel.onComplete.add((sender, options) => {
-      console.log(typeof(sender.data));
       this.onCompleteClicked.emit(sender.data);
     });
   }

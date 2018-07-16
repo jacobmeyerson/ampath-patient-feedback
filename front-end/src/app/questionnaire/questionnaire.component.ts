@@ -3,11 +3,11 @@ import { HttpService } from '../http.service';
 import { Response } from '@angular/http';
 
 @Component({
-  selector: 'app-questionnare',
-  templateUrl: './questionnare.component.html',
-  styleUrls: ['./questionnare.component.css']
+  selector: 'app-questionnaire',
+  templateUrl: './questionnaire.component.html',
+  styleUrls: ['./questionnaire.component.css']
 })
-export class QuestionnareComponent implements OnInit {
+export class QuestionnaireComponent implements OnInit {
   json: JSON;
 
   constructor(private httpService: HttpService) {}
@@ -19,11 +19,11 @@ export class QuestionnareComponent implements OnInit {
     });
   }
 
-  onSurveyDone(input) {
-    console.log('QUESTIONNAIRE COMPONENT', input)
+  onSurveyDone(response) {
+    console.log('QUESTIONNAIRE COMPONENT', response);
   }
 
-   // needed for survey editing function (JM thinks)
+  // needed for survey editing function (JM thinks)
   //  onSurveySaved(survey) {
   //    console.log('onsurveysaved');
   //   // this.json = survey;
