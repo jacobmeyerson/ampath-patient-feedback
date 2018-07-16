@@ -75,23 +75,23 @@ server.route({
   handler: function(request, h) {  
     const q1 = request.payload.question1;
     const q2 = request.payload.question2.toString();
-    console.log(q2);
-    console.log(typeof(q2));
-    const test = "bob";
+    // console.log(q2);
+    // console.log(typeof(q2));
+    // const test = "bob";
     // console.log(request.payload.question1);
     // console.log(typeof(request.payload.question1));
 
     // console.log(request.payload.question2.toString());
     // console.log(typeof(request.payload.question2.toString()));
-    const string = `INSERT INTO responses (rating, reasons) VALUES (${q1},'`+q2+`');`;// ${test});`
-    console.log(string);
+    // const string = `INSERT INTO responses (rating, reasons) VALUES (${q1},'${q2}');` //  `+q2+`');`;// ${test});`
+    // console.log(string);
     return new Promise(
       (resolve, reject) => {
         connection.query(
-          string,
+          `INSERT INTO responses (rating, reasons) VALUES (${q1},'${q2}');`,
           (error, rows, fields) => {
             if (error) {console.log('ERROR'); reject(error)}
-            else console.log(rows[0]) // resolve(rows)
+            // else console.log(rows[0]) // resolve(rows)
           });
       }
     );
