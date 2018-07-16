@@ -9,123 +9,105 @@ import { Response } from '../../../node_modules/@angular/http';
 })
 export class QuestionnareComponent implements OnInit {
 
-  json = {
-    "title": "Patient Feedback Questionaire",
-    "pages": [
+  json ={
+    "title":"POC Patient Feedback",
+    pages: [
      {
-      "name": "page1",
-      "elements": [
+      name: "page1",
+      elements: [
        {
-        "type": "radiogroup",
-        "name": "1",
-        "title": "Do you love Ampath",
-        "isRequired": true,
-        "choices": [
+        type: "rating",
+        name: "1",
+        title: "How likely is it that you would recommend\nthis clinic to a family member or friend?",
+        isRequired: true,
+        rateValues: [
          {
-          "value": "1",
-          "text": "Yes"
+          value: 1,
+          text: "1(Not likely)"
          },
+         2,
+         3,
+         4,
+         5,
+         "6",
+         "7",
+         "8",
+         "9",
          {
-          "value": "2",
-          "text": "No"
+          value: "10",
+          text: "10(Very Likely)"
          }
         ]
        }
       ]
      },
      {
-      "name": "page2",
-      "elements": [
+      name: "page2",
+      elements: [
        {
-        "type": "radiogroup",
-        "name": "2",
-        "visible": false,
-        "visibleIf": "{1} = \"2\"",
-        "title": "Why do you hate Ampath?",
-        "isRequired": true,
-        "choices": [
+        type: "checkbox",
+        name: "2",
+        visible: false,
+        visibleIf: "{1} = \"9\" or {1} = \"10\"",        
+        title: "What was the best part of today’s clinic?",
+        isRequired: true,
+        choices: [
          {
-          "value": "1",
-          "text": "No idea"
+          value: "1",
+          text: "Item"
          },
          {
-          "value": "2",
-          "text": "Thats is Nature"
+          value: "2",
+          text: "Item"
          },
          {
-          "value": "3",
-          "text": "Just That way"
+          value: "3",
+          text: "Item"
+         },
+         {
+          value: "4",
+          text: "Item"
+         },
+         {
+          value: "5",
+          text: "Item"
          }
         ]
        },
        {
-        "type": "radiogroup",
-        "name": "2",
-        "visible": false,
-        "visibleIf": "{1} = \"1\"",
-        "title": "Why do you love Ampath?",
-        "isRequired": true,
-        "choices": [
-         "item1",
-         "item2",
-         "item3"
-        ]
-       }
-      ]
-     },
-     {
-      "name": "page3",
-      "elements": [
-       {
-        "type": "datepicker",
-        "name": "3",
-        "title": "Select Date",
-        "isRequired": true
-       }
-      ]
-     },
-     {
-      "name": "page4",
-      "elements": [
-       {
-        "type": "dropdown",
-        "name": "4",
-        "title": "Select Department",
-        
-        "choices": [
-           "item1",
-           "item2",
-           "item3"
-          ]
-       }
-      ]
-     },
-     {
-      "name": "page5",
-      "elements": [
-       {
-        "type": "checkbox",
-        "name": "5",
-        "title": "Choose your favorite staff",
-        "choices": [
+        type: "checkbox",
+        name: "2",
+        visible: false,
+        visibleIf: "{1} = \"1\" or {1} = \"2\" or {1} = \"3\" or {1} = \"4\" or {1} = \"5\" or {1} = \"6\" or {1} = \"7\" or {1} = \"8\"",
+        title: "What would you change for next time?",
+        isRequired: true,
+        choices: [
          {
-          "value": "1",
-          "text": "Day"
+          value: "1",
+          text: "Item "
          },
          {
-          "value": "2",
-          "text": "Dei"
+          value: "2",
+          text: "Item"
          },
          {
-          "value": "3",
-          "text": "Days"
+          value: "3",
+          text: "Item"
+         },
+         {
+          value: "4",
+          text: "Item"
+         },
+         {
+          value: "5",
+          text: "Item"
          }
         ]
        }
       ]
      }
     ],
-    "showProgressBar": "Bottom"
+    "showProgressBar": "bottom"
    }
 
   constructor(private responseService: ResponseService) {}
