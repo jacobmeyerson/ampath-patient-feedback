@@ -52,7 +52,7 @@
           "name": "question2",
           "title": "What would you change for next time?",
           "isRequired": true,
-          "visibleIf": "{question1} == 1",
+          "visibleIf": "!({question1} == 9 or {question1} == 10)",
           "choices": [
             "itemA",
             "itemB",
