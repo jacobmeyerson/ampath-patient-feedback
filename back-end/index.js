@@ -22,55 +22,30 @@ const server = Hapi.Server({
   }
 });
 
-const responseValue_constructor = (surveyEncounterId) => (question) => (answer) => {
-  return "('"+surveyEncounterId+"','"+question+"','"+answer+"')";
-};
 
-
-// console.log(queryInit("('66','t1','t1p'),('70','t2','t2p')"));
-// console.log(surveyResponse, surveyEncounterId);
-
-
-
-// input: { question1: 3, question2b: [ 'itemA' ] } 86
 // builds a query to insert appropriate number of rows into surveyResponse table
 const surveyResponse_query_constructor = (surveyResponse, surveyEncounterId) => {
+  const responseValue_constructor = (surveyEncounterId) => (question) => (answer) =>
+    "('"+surveyEncounterId+"','"+question+"','"+answer+"')";
   const responseValue_surveySpecific = responseValue_constructor(surveyEncounterId);
-  var responseValueArray = [];
-  // var question2 = '';
   const queryInit = (responseValues) => 
                       'INSERT INTO surveyResponse (surveyEncounter_surveyEncounterId, question, answer) VALUES ' + 
                       responseValues + ';';
-  // responseValue += responseValue_surveySpecific('question1')(surveyResponse.question1);
   
+  var responseValueArray = [];
   for (var question in surveyResponse) {
-    // console.log(question);
-    // console.log(surveyResponse[question]);
     if (!Array.isArray(surveyResponse[question])) {
       responseValueArray.push(responseValue_surveySpecific(question)(surveyResponse[question]));
     } else {
       const responseValue_questionSpecific = responseValue_surveySpecific(question);
-      for (let answer of surveyResponse[question]) {
+      for (var answer of surveyResponse[question]) {
         responseValueArray.push(responseValue_questionSpecific(answer));
       }
     }
   }
-  console.log(responseValueArray, '!#42-309481-09841!!!');
-  // const b = responseValue_constructor(surveyEncounterId)('bob1')('bob2');
-  // console.log(queryInit(responseValue));
-  return queryInit(responseValueArray.join()) //'SELECT * FROM surveyEncounter;' //
+
+  return queryInit(responseValueArray.join())
 };
-    // const q1 = request.payload.question1;
-    // TODO: check if whether it is question2a or question2b
-    // const q2 = request.payload.question2.toString();
-    // const surveyResponse_entries = (surveyEncounter_surveyEncounterId) =>
-    //                                `('${surveyEncounter_surveyEncounterId}','question1', 'answer1');`
-    // const surveyResponse_query = (surveyEncounter_surveyEncounterId) => 
-    //                              `INSERT INTO surveyResponse (surveyEncounter_surveyEncounterId, question, answer) VALUES` +
-    //                              surveyResponse_entries(surveyEncounter_surveyEncounterId)
-
-
-
 
 server.route({
   method: 'GET',
@@ -110,13 +85,10 @@ server.route({
             const surveyEncounterId = rows[0]["LAST_INSERT_ID()"];
             const surveyResponse_query = surveyResponse_query_constructor(request.payload.responseInfo, surveyEncounterId);
             
-            // console.log(surveyResponse_query);
-            
             connection.query(
               surveyResponse_query,
               (error, rows, _fields) => {
                 if (error) {console.log(error); reject(error)}
-                // console.log(rows); // TODO: get rid of
               }
             );
           }
@@ -125,6 +97,8 @@ server.route({
     );
   }
 });
+
+
 server.route({
   method: 'GET',
   path: '/test',
