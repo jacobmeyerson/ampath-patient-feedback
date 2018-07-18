@@ -46,15 +46,22 @@ server.route({
     // const q1 = request.payload.question1;
     // TODO: check if whether it is question2a or question2b
     // const q2 = request.payload.question2.toString();
-    const surveyResponse_query = `INSERT INTO surveyResponse 
+    const surveyResponse_query = (surveyEncounter_surveyEncounterId) =>
+                                  `INSERT INTO surveyResponse 
                                   (surveyEncounter_surveyEncounterId, question, answer) VALUES 
-                                  ('25', 'TEST BOB', 'TEST BOB ANSWER');`;
-    const query = surveyEncounter_query + surveyResponse_query;
+                                  ('${surveyEncounter_surveyEncounterId}', 'TEST YAK', 'TEST BOB ANSWER');`;
+    // const test =                  `INSERT INTO surveyResponse 
+    //                               (surveyEncounter_surveyEncounterId, question, answer) VALUES 
+    //                               ('${surveyEncounter_surveyEncounterId}', 'TEST YAK', 'TEST BOB ANSWER');`
+    // const query = surveyEncounter_query + surveyResponse_query;
     // `INSERT INTO responses (rating, reasons) VALUES (${q1},'${q2}');`;
     return new Promise(
       (resolve, reject) => {
-        var surveyEncounterId = null;
-        // console.log(query);
+        var surveyEncounter_surveyEncounterId;
+        const test =                  `INSERT INTO surveyResponse 
+        (surveyEncounter_surveyEncounterId, question, answer) VALUES 
+        ('${surveyEncounter_surveyEncounterId}', 'TEST YAK', 'TEST BOB ANSWER');`
+
         connection.query(
           surveyEncounter_query,
           (error, _rows, _fields) => {
@@ -64,16 +71,23 @@ server.route({
         connection.query(
           'SELECT LAST_INSERT_ID();',
           (error, rows, _fields) => {
-            surveyEncounterId = rows[0]["LAST_INSERT_ID()"];
-            // console.log(rows[0]["LAST_INSERT_ID()"]);
+            // TODO: add error catching
+            surveyEncounter_surveyEncounterId = rows[0]["LAST_INSERT_ID()"];
+
+            connection.query(
+              surveyResponse_query(surveyEncounter_surveyEncounterId), // surveyResponse_query(surveyEncounter_surveyEncounterId),
+              (error, rows, _fields) => {
+                if (error) console.log(error);
+                // console.log('did it');
+                // console.log(surveyResponse_query(surveyEncounter_surveyEncounterId))
+                // console.log(surveyEncounterId);
+              }
+            );
+
+
           }
         );
-        connection.query(
-          'SELECT * FROM surveyResponse',
-          (error, rows, _fields) => {
-            console.log(surveyEncounterId);
-          }
-        );
+
         // console.log(surveyEncounterId);
       }
     );
