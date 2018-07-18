@@ -36,7 +36,7 @@ const responseValue_constructor = (surveyEncounterId) => (question) => (answer) 
 // builds a query to insert appropriate number of rows into surveyResponse table
 const surveyResponse_query_constructor = (surveyResponse, surveyEncounterId) => {
   const responseValue_surveySpecific = responseValue_constructor(surveyEncounterId);
-  var responseValue = '';
+  var responseValueArray = [];
   // var question2 = '';
   const queryInit = (responseValues) => 
                       'INSERT INTO surveyResponse (surveyEncounter_surveyEncounterId, question, answer) VALUES ' + 
@@ -44,21 +44,21 @@ const surveyResponse_query_constructor = (surveyResponse, surveyEncounterId) => 
   // responseValue += responseValue_surveySpecific('question1')(surveyResponse.question1);
   
   for (var question in surveyResponse) {
-    console.log(question);
-    console.log(surveyResponse[question]);
+    // console.log(question);
+    // console.log(surveyResponse[question]);
     if (!Array.isArray(surveyResponse[question])) {
-      responseValue += responseValue_surveySpecific(question)(surveyResponse[question]);
+      responseValueArray.push(responseValue_surveySpecific(question)(surveyResponse[question]));
     } else {
       const responseValue_questionSpecific = responseValue_surveySpecific(question);
       for (let answer of surveyResponse[question]) {
-        responseValue += responseValue_questionSpecific(answer);
+        responseValueArray.push(responseValue_questionSpecific(answer));
       }
     }
   }
-  console.log(responseValue, '!#42-309481-09841!!!');
+  console.log(responseValueArray, '!#42-309481-09841!!!');
   // const b = responseValue_constructor(surveyEncounterId)('bob1')('bob2');
   // console.log(queryInit(responseValue));
-  return 'SELECT * FROM surveyEncounter;' //queryInit(responseValue) //
+  return queryInit(responseValueArray.join()) //'SELECT * FROM surveyEncounter;' //
 };
     // const q1 = request.payload.question1;
     // TODO: check if whether it is question2a or question2b
