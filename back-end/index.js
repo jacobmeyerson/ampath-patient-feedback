@@ -1,3 +1,5 @@
+// TODO: sanitize inputs
+
 'use strict';
 
 const SURVEYFILE = './surveys.json';
@@ -20,6 +22,29 @@ const server = Hapi.Server({
   }
 });
 
+// builds a query to insert appropriate number of rows into surveyResponse table
+const surveyResponse_query_constructor = (surveyResponse, surveyEncounterId) => {
+  const queryInit = (responseValues) => 
+              'INSERT INTO surveyResponse (surveyEncounter_surveyEncounterId, question, answer) VALUES ' + 
+              responseValues + ';';
+  //                              surveyResponse_entries(surveyEncounter_surveyEncounterId)
+  console.log(queryInit("('66','t1','t1p'),('70','t2','t2p')"));
+  console.log(surveyResponse, surveyEncounterId);
+
+  return 'SELECT * FROM surveyEncounter;'
+};
+    // const q1 = request.payload.question1;
+    // TODO: check if whether it is question2a or question2b
+    // const q2 = request.payload.question2.toString();
+    // const surveyResponse_entries = (surveyEncounter_surveyEncounterId) =>
+    //                                `('${surveyEncounter_surveyEncounterId}','question1', 'answer1');`
+    // const surveyResponse_query = (surveyEncounter_surveyEncounterId) => 
+    //                              `INSERT INTO surveyResponse (surveyEncounter_surveyEncounterId, question, answer) VALUES` +
+    //                              surveyResponse_entries(surveyEncounter_surveyEncounterId)
+
+
+
+
 server.route({
   method: 'GET',
   path: '/getSurveys',
@@ -32,7 +57,7 @@ server.route({
   method: 'POST',
   path: '/storeSurveys',
   handler: function(request, h) {
-    const payload = request.payload;
+    const payload = request.payload.encounterInfo;
 
     const surveyId = payload.surveyId;
     const location = payload.location;
@@ -42,13 +67,7 @@ server.route({
     const surveyEncounter_query = `INSERT INTO surveyEncounter
                                   (surveyId, location, date, department, clinicalProgramId) VALUES
                                   ('${surveyId}','${location}','${date}','${department}','${clinicalProgramId}');`;
-    // const q1 = request.payload.question1;
-    // TODO: check if whether it is question2a or question2b
-    // const q2 = request.payload.question2.toString();
-    const surveyResponse_query = (surveyEncounter_surveyEncounterId) =>
-                                  `INSERT INTO surveyResponse 
-                                  (surveyEncounter_surveyEncounterId, question, answer) VALUES 
-                                  ('${surveyEncounter_surveyEncounterId}', 'TEST YAK', 'TEST BOB ANSWER');`;
+
     return new Promise(
       (resolve, reject) => {
         connection.query(
@@ -61,11 +80,16 @@ server.route({
           'SELECT LAST_INSERT_ID();',
           (error, rows, _fields) => {
             if (error) {console.log(error); reject(error)}
-
+            const surveyEncounterId = rows[0]["LAST_INSERT_ID()"];
+            const surveyResponse_query = surveyResponse_query_constructor(request.payload.responseInfo, surveyEncounterId);
+            
+            // console.log(surveyResponse_query);
+            
             connection.query(
-              surveyResponse_query(rows[0]["LAST_INSERT_ID()"]),
+              surveyResponse_query,
               (error, rows, _fields) => {
                 if (error) {console.log(error); reject(error)}
+                // console.log(rows); // TODO: get rid of
               }
             );
           }
