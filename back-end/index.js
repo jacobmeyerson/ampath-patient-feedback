@@ -53,6 +53,7 @@ server.route({
     // `INSERT INTO responses (rating, reasons) VALUES (${q1},'${q2}');`;
     return new Promise(
       (resolve, reject) => {
+        var surveyEncounterId = null;
         // console.log(query);
         connection.query(
           surveyEncounter_query,
@@ -63,9 +64,17 @@ server.route({
         connection.query(
           'SELECT LAST_INSERT_ID();',
           (error, rows, _fields) => {
-            console.log(rows);
+            surveyEncounterId = rows[0]["LAST_INSERT_ID()"];
+            // console.log(rows[0]["LAST_INSERT_ID()"]);
           }
         );
+        connection.query(
+          'SELECT * FROM surveyResponse',
+          (error, rows, _fields) => {
+            console.log(surveyEncounterId);
+          }
+        );
+        // console.log(surveyEncounterId);
       }
     );
 
