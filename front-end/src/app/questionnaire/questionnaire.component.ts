@@ -20,6 +20,7 @@ export class QuestionnaireComponent implements OnInit {
   }
 
   onSurveyDone(response) {
+    console.log(response);
     this.httpService.storeSurveys(response).subscribe();
   }
 
