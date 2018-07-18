@@ -22,16 +22,38 @@ const server = Hapi.Server({
   }
 });
 
+const responseValue_constructor = (surveyEncounterId) => (question) => (answer) => {
+  return "('"+surveyEncounterId+"','"+question+"','"+answer+"')";
+};
+
+
+// console.log(queryInit("('66','t1','t1p'),('70','t2','t2p')"));
+// console.log(surveyResponse, surveyEncounterId);
+
+
+
+// input: { question1: 3, question2b: [ 'itemA' ] } 86
 // builds a query to insert appropriate number of rows into surveyResponse table
 const surveyResponse_query_constructor = (surveyResponse, surveyEncounterId) => {
+  const responseValue_surveySpecific = responseValue_constructor(surveyEncounterId);
+  var responseValue = '';
+  var question2 = '';
   const queryInit = (responseValues) => 
-              'INSERT INTO surveyResponse (surveyEncounter_surveyEncounterId, question, answer) VALUES ' + 
-              responseValues + ';';
-  //                              surveyResponse_entries(surveyEncounter_surveyEncounterId)
-  console.log(queryInit("('66','t1','t1p'),('70','t2','t2p')"));
-  console.log(surveyResponse, surveyEncounterId);
-
-  return 'SELECT * FROM surveyEncounter;'
+                      'INSERT INTO surveyResponse (surveyEncounter_surveyEncounterId, question, answer) VALUES ' + 
+                      responseValues + ';';
+  // responseValue += responseValue_surveySpecific('question1')(surveyResponse.question1);
+  
+  for (var question in surveyResponse) {
+    console.log(question);
+    console.log(surveyResponse[question]);
+    if (!Array.isArray(surveyResponse[question])) {
+      responseValue += responseValue_surveySpecific(question)(surveyResponse[question])
+    }
+  }
+  console.log(responseValue, '!#42-309481-09841!!!');
+  // const b = responseValue_constructor(surveyEncounterId)('bob1')('bob2');
+  // console.log(queryInit(responseValue));
+  return queryInit(responseValue) // 'SELECT * FROM surveyEncounter;' //
 };
     // const q1 = request.payload.question1;
     // TODO: check if whether it is question2a or question2b
