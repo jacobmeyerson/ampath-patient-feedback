@@ -15,12 +15,16 @@ export class QuestionnaireComponent implements OnInit {
   ngOnInit() {
     this.httpService.getSurveys().subscribe(
       (response: Response) => {
-        this.json = response.json();
+        this.json = response.json().survey;
     });
   }
 
   onSurveyDone(response) {
     console.log(response);
+    response.location = 'test location';
+    response.date = '2018-07-06';
+    response.department = 'test department';
+    response.clinicalProgramId = 1;
     this.httpService.storeSurveys(response).subscribe();
   }
 

@@ -1,67 +1,72 @@
 {
-	"pages": [
-		{
-			"name": "page1",
-			"elements": [
-				{
-					"type": "rating",
-					"name": "question1",
-					"title": "How likely is it that you would recommend this clinic to a family member or friend?",
-					"isRequired": true,
-					"rateValues": [
-						{
-							"value": 1,
-							"text": "1 (not likely)"
-						},
-						2,
-						3,
-						4,
-						5,
-						6,
-						7,
-						8,
-						9,
-						{
-							"value": 10,
-							"text": "10 (very likely)"
-						}
-					],
-					"rateMax": 10
-        }
-      ]
-    },
-    {
-      "name": "page2",
-      "elements": [
-        {
-          "type": "checkbox",
-          "name": "question2",
-          "title": "What was the best part of today’s clinic?",
-          "isRequired": true,
-          "visibleIf": "{question1} == 9 or {question1} == 10",
-          "choices": [
-            "item1",
-            "item2",
-            "item3",
-            "item4",
-            "item5"
-          ]
-        },
-        {
-          "type": "checkbox",
-          "name": "question2",
-          "title": "What would you change for next time?",
-          "isRequired": true,
-          "visibleIf": "!({question1} == 9 or {question1} == 10)",
-          "choices": [
-            "itemA",
-            "itemB",
-            "itemC",
-            "itemD",
-            "itemE"
-          ]
-        }
-      ]
-    }
-  ]
+  "surveyId": 1,
+  "survey": {
+    "pages": [
+      {
+        "name": "page1",
+        "elements": [
+          {
+            "type": "rating",
+            "name": "question1",
+            "title": "How likely is it that you would recommend this clinic to a family member or friend?",
+            "isRequired": true,
+            "rateValues": [
+              {
+                "value": 1,
+                "text": "1 (not likely)"
+              },
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              {
+                "value": 10,
+                "text": "10 (very likely)"
+              }
+            ],
+            "rateMax": 10
+          }
+        ]
+      },
+      {
+        "name": "page2",
+        "elements": [
+          {
+            "type": "checkbox",
+            "name": "question2a",
+            "title": "What was the best part of today’s clinic?",
+            "isRequired": true,
+            "visibleIf": "{question1} == 9 or {question1} == 10",
+            "choices": [
+              "item1",
+              "item2",
+              "item3",
+              "item4",
+              "item5"
+            ]
+          },
+          {
+            "type": "checkbox",
+            "name": "question2b",
+            "title": "What would you change for next time?",
+            "isRequired": true,
+            "visibleIf": "!({question1} == 9 or {question1} == 10)",
+            "choices": [
+              "itemA",
+              "itemB",
+              "itemC",
+              "itemD",
+              "itemE"
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }
+
+
