@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+// import { Headers, Http, Response } from '@angular/http';
 import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
@@ -10,12 +10,17 @@ import { Router } from '../../../node_modules/@angular/router';
 export class LoginComponent {
   @Output() loggedInComplete = new EventEmitter<boolean>();
 
-  constructor(private http: Http,
+  constructor(// private http: Http,
               private router: Router) { }
 
   onLogin(username, password) {
-    // TODO: only navigate if openMRS has authenticated
-    this.router.navigate(['../location']);
+    // TODO: change to back-end authentication
+    if (username.value === 'bob') {
+      this.router.navigate(['../location']);
+    } else {
+      // TODO: flash message if improper credentials
+      console.log('not authenticated');
+    }
 
   }
 }
