@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-// import { Headers, Http, Response } from '@angular/http';
 import { Router } from '@angular/router';
 import { HttpService } from '../http.service';
 
@@ -9,25 +8,23 @@ import { HttpService } from '../http.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  @Output() loggedInComplete = new EventEmitter<boolean>();
-
   constructor(private router: Router, private httpService: HttpService) { }
 
   onLogin(username: string, password: string) {
     // replace with call to server
     let authenticated = false;
-
     if (username === 'bob') {
       authenticated = true;
     }
+
+
     if (authenticated) {
       const base64 = btoa(username + ':' + password);
       window.sessionStorage.setItem('auth.credentials', base64);
+    } else {
+      console.log('incorrect credentials');
     }
     this.router.navigate(['../location']);
-
-    // TODO: flash message if improper credentials
-
   }
 }
 

@@ -12,7 +12,6 @@ export class LocationsComponent implements OnInit {
 
   onSave() {
     this.router.navigate(['../survey']);
-    console.log(window.sessionStorage.getItem('auth.credentials'));
   }
 
   ngOnInit() {
