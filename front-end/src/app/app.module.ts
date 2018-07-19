@@ -11,9 +11,9 @@ import { LoginComponent } from './login/login.component';
 
 import { HttpService } from './http.service';
 import { LocationsComponent } from './locations/locations.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -22,8 +22,7 @@ import { HomeComponent } from './home/home.component';
     SurveyEditorComponent,
     QuestionnaireComponent,
     LoginComponent,
-    LocationsComponent,
-    HomeComponent
+    LocationsComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +31,7 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     RouterModule
   ],
-  providers: [HttpService],
+  providers: [HttpService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 // import { Headers, Http, Response } from '@angular/http';
-import { Router } from '../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-login',
@@ -10,20 +11,33 @@ import { Router } from '../../../node_modules/@angular/router';
 export class LoginComponent {
   @Output() loggedInComplete = new EventEmitter<boolean>();
 
-  constructor(// private http: Http,
-              private router: Router) { }
+  constructor(private router: Router, private httpService: HttpService) { }
 
-  onLogin(username, password) {
-    // TODO: change to back-end authentication
-    if (username.value === 'bob') {
-      this.router.navigate(['../location']);
-    } else {
-      // TODO: flash message if improper credentials
-      console.log('not authenticated');
+  onLogin(username: string, password: string) {
+
+    // replace with call to server
+    const authenticated = true;
+
+    if (authenticated) {
+      const base64 = btoa(username + ':' + password);
+      window.sessionStorage.setItem('auth.credentials', base64);
     }
+    this.router.navigate(['../location']);
+    // TODO: change to back-end authentication
+    // if (username.value === 'bob') {
+    //   this.router.navigate(['../location']);
+    // } else {
+    //   // TODO: flash message if improper credentials
+    //   console.log('not authenticated');
+    // }
 
   }
 }
+
+// if authenticated: window.sessionStorage.setItem(keyName, value);
+// keyName: CREDENTIALS_KEY (they use 'auth.credentials')
+// value: base64, where let base64 = btoa(username + ':' + password);
+
 
     // const headers = new Headers();
 

@@ -10,6 +10,8 @@ import { LocationsComponent } from './locations/locations.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
+
 
 const appRoutes = [
   {
@@ -19,7 +21,7 @@ const appRoutes = [
     path: 'login', component: LoginComponent
   },
   {
-    path: 'location', component: LocationsComponent
+    path: 'location', component: LocationsComponent // , canActivate: [AuthGuard]
   },
   {
     path: 'survey', component: QuestionnaireComponent

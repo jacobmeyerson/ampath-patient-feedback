@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-locations',
@@ -12,6 +12,7 @@ export class LocationsComponent implements OnInit {
 
   onSave() {
     this.router.navigate(['../survey']);
+    console.log(window.sessionStorage.getItem('auth.credentials'));
   }
 
   ngOnInit() {
