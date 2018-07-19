@@ -1,5 +1,3 @@
-#surveyComplete,
-#surveyNext,
-#surveyPrev {
-    color: #428bca;
+.sv_header{
+    background-color: white;
 }
