@@ -1,6 +1,6 @@
-<app-login
-(loggedInComplete)="loggedIn=true"
-*ngIf="!loggedIn">
-</app-login>
-<app-questionnare *ngIf="loggedIn"></app-questionnare>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #428bca;">
+        <a class="navbar-brand" href="#">Patient Feedback Questionaire</a>
+</nav>
+<br>
+<router-outlet></router-outlet>
 

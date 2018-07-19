@@ -9,6 +9,10 @@ import { SurveyEditorComponent } from './survey.editor.component';
 import { QuestionnareComponent } from './questionnare/questionnare.component';
 import { LoginComponent } from './login/login.component';
 import { ResponseService } from './response.service';
+import { LocationsComponent } from './locations/locations.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +20,16 @@ import { ResponseService } from './response.service';
     SurveyComponent,
     SurveyEditorComponent,
     QuestionnareComponent,
-    LoginComponent
+    LoginComponent,
+    LocationsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule,
+    RouterModule
   ],
   providers: [ResponseService],
   bootstrap: [AppComponent]

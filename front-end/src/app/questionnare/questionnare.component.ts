@@ -8,8 +8,9 @@ import { Response } from '../../../node_modules/@angular/http';
   styleUrls: ['./questionnare.component.css']
 })
 export class QuestionnareComponent implements OnInit {
+
   location ={
-    "title":"POC Patient Feedback",
+    // "title":"POC Patient Feedback",
     pages: [
      {
       name: "page1",
@@ -110,7 +111,7 @@ export class QuestionnareComponent implements OnInit {
    }
 
   questionnaire ={
-    "title":"POC Patient Feedback",
+    // "title":"POC Patient Feedback",
     pages: [
      {
       name: "page1",
