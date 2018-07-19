@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +10,16 @@ import { Headers, Http, Response } from '@angular/http';
 export class LoginComponent {
   @Output() loggedInComplete = new EventEmitter<boolean>();
 
-  constructor(private http: Http) { }
+  constructor(private http: Http,
+              private router: Router) { }
 
   onLogin(username, password) {
-    this.loggedInComplete.emit(true);
+    // TODO: only navigate if openMRS has authenticated
+    this.router.navigate(['../location']);
+
+  }
+}
+
     // const headers = new Headers();
 
     // const credentials = btoa(username.value + ':' + password.value);
@@ -36,7 +43,7 @@ export class LoginComponent {
       //       headers: headers}); // logs out - according to https://wiki.openmrs.org/display/docs/REST+Web+Services+API+For+Clients
       // }
     // });
-  }
+
 
   // ngOnInit () {
     // const headers = new Headers();
@@ -52,4 +59,3 @@ export class LoginComponent {
     //   (response: Response) => console.log('Aunthentication is successful')
     // );
   // }
-}

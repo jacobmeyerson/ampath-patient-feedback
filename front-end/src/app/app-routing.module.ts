@@ -10,29 +10,20 @@ import { LocationsComponent } from './locations/locations.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 
-const appRoutes=[
+const appRoutes = [
   {
-    
-    path: '', redirectTo: 'home', pathMatch: 'full'
+    path: '', redirectTo: 'login', pathMatch: 'full'
   },
   {
-    
-    path:'survey', component: QuestionnaireComponent
+    path: 'login', component: LoginComponent
   },
   {
-    
-    path:'location', component: LocationsComponent
+    path: 'location', component: LocationsComponent
   },
   {
-    
-    path:'home', component: HomeComponent
-  },
-  {
-    
-    path:'login', component: LoginComponent
-  },
+    path: 'survey', component: QuestionnaireComponent
+  }
 ];
 
 @NgModule({
