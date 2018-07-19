@@ -20,12 +20,23 @@ export class QuestionnaireComponent implements OnInit {
   }
 
   onSurveyDone(response) {
-    console.log(response);
-    response.location = 'test location';
-    response.date = '2018-07-06';
-    response.department = 'test department';
-    response.clinicalProgramId = 1;
-    this.httpService.storeSurveys(response).subscribe();
+    const encounterInfo = {
+      'surveyId': 5088,
+      'location': 'test location',
+      'date': '2018-07-06',
+      'department': 'test department',
+      'clinicalProgramId': 1
+    };
+    const toServer = {
+      'encounterInfo': encounterInfo,
+      'responseInfo': response
+    };
+    // response.surveyId = 5088;
+    // response.location = 'test locationBOB';
+    // response.date = '2018-07-06';
+    // response.department = 'test department';
+    // response.clinicalProgramId = 1;
+    this.httpService.storeSurveys(toServer).subscribe();
   }
 
   // needed for survey editing function (JM thinks)
