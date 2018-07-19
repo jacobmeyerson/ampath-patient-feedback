@@ -14,22 +14,19 @@ export class LoginComponent {
   constructor(private router: Router, private httpService: HttpService) { }
 
   onLogin(username: string, password: string) {
-
     // replace with call to server
-    const authenticated = true;
+    let authenticated = false;
 
+    if (username === 'bob') {
+      authenticated = true;
+    }
     if (authenticated) {
       const base64 = btoa(username + ':' + password);
       window.sessionStorage.setItem('auth.credentials', base64);
     }
     this.router.navigate(['../location']);
-    // TODO: change to back-end authentication
-    // if (username.value === 'bob') {
-    //   this.router.navigate(['../location']);
-    // } else {
-    //   // TODO: flash message if improper credentials
-    //   console.log('not authenticated');
-    // }
+
+    // TODO: flash message if improper credentials
 
   }
 }

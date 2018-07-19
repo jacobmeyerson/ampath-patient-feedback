@@ -21,10 +21,10 @@ const appRoutes = [
     path: 'login', component: LoginComponent
   },
   {
-    path: 'location', component: LocationsComponent // , canActivate: [AuthGuard]
+    path: 'location', component: LocationsComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'survey', component: QuestionnaireComponent
+    path: 'survey', component: QuestionnaireComponent, canActivate: [AuthGuard]
   }
 ];
 
