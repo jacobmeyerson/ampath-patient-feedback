@@ -8,21 +8,22 @@ import { HttpService } from '../http.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  showAlert = false;
+
   constructor(private router: Router, private httpService: HttpService) { }
 
   onLogin(username: string, password: string) {
-    // replace with call to server
+    // TODO: replace with call to server
     let authenticated = false;
     if (username === 'bob') {
       authenticated = true;
     }
 
-
     if (authenticated) {
       const base64 = btoa(username + ':' + password);
       window.sessionStorage.setItem('auth.credentials', base64);
     } else {
-      console.log('incorrect credentials');
+      this.showAlert = true;
     }
     this.router.navigate(['../location']);
   }
