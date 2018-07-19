@@ -1,6 +1,7 @@
 {
   "surveyId": 1,
   "survey": {
+    "showCompletedPage": false,
     "pages": [
       {
         "name": "page1",
