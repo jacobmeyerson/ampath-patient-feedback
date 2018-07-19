@@ -47,6 +47,23 @@ const surveyResponse_query_constructor = (surveyResponse, surveyEncounterId) => 
   return queryInit(responseValueArray.join())
 };
 
+const surveyEncounter_query_constructor = (surveyEncounterInfo) => {
+  // const surveyId = payload.surveyId;
+  // const location = payload.location;
+  // const date = payload.date;
+  // const department = payload.department;
+  // const clinicalProgramId = payload.clinicalProgramId;
+  const surveyEncounter_query = `INSERT INTO surveyEncounter
+                                (surveyId, location, date, department, clinicalProgramId) VALUES
+                                ('${surveyEncounterInfo.surveyId}',
+                                 '${surveyEncounterInfo.location}',
+                                 '${surveyEncounterInfo.date}',
+                                 '${surveyEncounterInfo.department}',
+                                 '${surveyEncounterInfo.clinicalProgramId}');`;
+  return surveyEncounter_query;
+};
+
+
 server.route({
   method: 'GET',
   path: '/getSurveys',
@@ -59,21 +76,13 @@ server.route({
   method: 'POST',
   path: '/storeSurveys',
   handler: function(request, h) {
-    const payload = request.payload.encounterInfo;
+    // const payload = request.payload.encounterInfo;
 
-    const surveyId = payload.surveyId;
-    const location = payload.location;
-    const date = payload.date;
-    const department = payload.department;
-    const clinicalProgramId = payload.clinicalProgramId;
-    const surveyEncounter_query = `INSERT INTO surveyEncounter
-                                  (surveyId, location, date, department, clinicalProgramId) VALUES
-                                  ('${surveyId}','${location}','${date}','${department}','${clinicalProgramId}');`;
 
     return new Promise(
       (resolve, reject) => {
         connection.query(
-          surveyEncounter_query,
+          surveyEncounter_query_constructor(request.payload.encounterInfo),
           (error, _rows, _fields) => {
             if (error) {console.log(error); reject(error)}
           }
