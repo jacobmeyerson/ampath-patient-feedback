@@ -125,9 +125,6 @@ server.route({
 });
 
 
-
-
-
 const init = async () => {
   connection.connect();
   
@@ -138,16 +135,13 @@ const init = async () => {
 
   server.auth.strategy('simple', 'basic', { validate });
 
-  for (var route of routes.r(connection)) {
-    // console.log(route);
+  for (var route of routes.routesFxn(connection)) {
     server.route(route);
   }
-  console.log('hi');
-  console.log(routes.r(connection)[0]);
-  // server.route(routes.r(connection)[0]);
+
   // causes all routes to require authentication
-  // server.auth.default('simple');
-  
+  server.auth.default('simple');
+
   await server.start();
   console.log('Server is running');
 }
