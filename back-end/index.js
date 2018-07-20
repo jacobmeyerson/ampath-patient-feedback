@@ -65,20 +65,23 @@ const validate = async (_request, username, password) => {
  
   return new Promise(
     (resolve, reject) => {
-      var callback = (error, response, _body) => {
-        if (error) reject(error);
-        const data = JSON.parse(response.body);
-        resolve(data.authenticated);
-      }
+      if (username === 'bob') resolve({isValid: true, credentials: {}})
+      else resolve({isValid: false, credentials: {}})});
+    // when test-amrs is working, comment out above 2 lines, uncomment below lines
+    //   var callback = (error, response, _body) => {
+    //     if (error) reject(error);
+    //     const data = JSON.parse(response.body);
+    //     resolve({isValid: data.authenticated, credentials: {}});
+    //   }
 
-      request(
-        { method: 'GET',
-          url: 'https://ngx.ampath.or.ke/test-amrs/ws/rest/v1/session/',
-          headers: headers
-        }, callback
-      );
-    });
-};
+    //   request(
+    //     { method: 'GET',
+    //       url: 'https://ngx.ampath.or.ke/test-amrs/ws/rest/v1/session/',
+    //       headers: headers
+    //     }, callback
+    //   );
+    // });
+  };
 
 server.route({
   method: 'GET',
@@ -97,20 +100,20 @@ server.route({
         connection.query(
           surveyEncounter_query_constructor(request.payload.encounterInfo),
           (error, _rows, _fields) => {
-            if (error) {console.log(error); reject(error)}
+            if (error) {reject(error)}
           }
         );
         connection.query(
           'SELECT LAST_INSERT_ID();',
           (error, rows, _fields) => {
-            if (error) {console.log(error); reject(error)}
+            if (error) {reject(error)}
             const surveyEncounterId = rows[0]["LAST_INSERT_ID()"];
             const surveyResponse_query = surveyResponse_query_constructor(request.payload.responseInfo, surveyEncounterId);
             
             connection.query(
               surveyResponse_query,
               (error, rows, _fields) => {
-                if (error) {console.log(error); reject(error)}
+                if (error) {reject(error)}
               }
             );
           }
@@ -151,7 +154,7 @@ const init = async () => {
   server.auth.strategy('simple', 'basic', { validate });
 
   // causes all routes to require authentication
-  // server.auth.default('simple');
+  server.auth.default('simple');
   
   await server.start();
   console.log('Server is running');
@@ -164,4 +167,3 @@ process.on('SIGINT', () => {
   connection.end();
   process.exit();
 });
-
