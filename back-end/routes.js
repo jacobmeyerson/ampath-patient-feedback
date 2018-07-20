@@ -1,6 +1,7 @@
 'use strict';
 
 const SURVEYFILE = './surveys.json';
+const request = require('request');
 
 // builds a query to insert appropriate number of rows into surveyResponse table
 const surveyResponse_query_constructor = (surveyResponse, surveyEncounterId) => {
@@ -92,8 +93,17 @@ module.exports = { routesFxn: (connection, validate) => [
   options: {
     auth: false
   },
-  handler: function(request, h) {
-    return 'bob'
+  handler: function(req, h) {
+    return new Promise(
+      (resolve, reject) => {
+        const callback = (_error, _response, _body) => '';
+        request(
+          { method: 'DELETE',
+              url: 'https://ngx.ampath.or.ke/test-amrs/ws/rest/v1/session/',
+            }, callback
+        );    
+      }
+    )
   }
 }
 ]}
