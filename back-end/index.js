@@ -6,6 +6,7 @@ const SURVEYFILE = './surveys.json';
 
 const Hapi = require('hapi');
 const mysql = require('mysql');
+const request = require('request');
 
 const connection = mysql.createConnection({
   host     : 'localhost',
@@ -48,11 +49,6 @@ const surveyResponse_query_constructor = (surveyResponse, surveyEncounterId) => 
 };
 
 const surveyEncounter_query_constructor = (surveyEncounterInfo) => {
-  // const surveyId = payload.surveyId;
-  // const location = payload.location;
-  // const date = payload.date;
-  // const department = payload.department;
-  // const clinicalProgramId = payload.clinicalProgramId;
   const surveyEncounter_query = `INSERT INTO surveyEncounter
                                 (surveyId, location, date, department, clinicalProgramId) VALUES
                                 ('${surveyEncounterInfo.surveyId}',
@@ -63,6 +59,26 @@ const surveyEncounter_query_constructor = (surveyEncounterInfo) => {
   return surveyEncounter_query;
 };
 
+const validate = async (_request, username, password) => {
+  var authBuffer = new Buffer(username + ":" + password).toString("base64");
+  var headers = {'Authorization': "Basic " + authBuffer};
+ 
+  return new Promise(
+    (resolve, reject) => {
+      var callback = (error, response, _body) => {
+        if (error) reject(error);
+        const data = JSON.parse(response.body);
+        resolve(data.authenticated);
+      }
+
+      request(
+        { method: 'GET',
+          url: 'https://ngx.ampath.or.ke/test-amrs/ws/rest/v1/session/',
+          headers: headers
+        }, callback
+      );
+    });
+};
 
 server.route({
   method: 'GET',
@@ -76,9 +92,6 @@ server.route({
   method: 'POST',
   path: '/storeSurveys',
   handler: function(request, h) {
-    // const payload = request.payload.encounterInfo;
-
-
     return new Promise(
       (resolve, reject) => {
         connection.query(
@@ -129,11 +142,17 @@ server.route({
 
 const init = async () => {
   connection.connect();
+  
+  await server.register([
+    {plugin: require('hapi-auth-basic')},
+    {plugin: require('inert')}
+  ]);
 
-  await server.register({
-    plugin: require('inert')
-  });
+  server.auth.strategy('simple', 'basic', { validate });
 
+  // causes all routes to require authentication
+  // server.auth.default('simple');
+  
   await server.start();
   console.log('Server is running');
 }
