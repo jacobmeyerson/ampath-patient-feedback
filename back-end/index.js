@@ -23,14 +23,14 @@ const server = Hapi.Server({
 });
 
 const validate = async (_request, username, password) => {
-  var authBuffer = new Buffer(username + ":" + password).toString("base64");
-  var headers = {'Authorization': "Basic " + authBuffer};
- 
+  // var authBuffer = new Buffer(username + ":" + password).toString("base64");
+  // var headers = {'Authorization': "Basic " + authBuffer};
+  console.log(username);
   return new Promise(
     (resolve, reject) => {
       if (username === 'bob') resolve({isValid: true, credentials: {}})
       else resolve({isValid: false, credentials: {}})});
-    // when test-amrs is working, comment out above 2 lines, uncomment below lines
+    // when test-amrs is working, comment out above 2 lines, uncomment below lines and authbuffer/header lines
     //   var callback = (error, response, _body) => {
     //     if (error) reject(error);
     //     const data = JSON.parse(response.body);
@@ -56,12 +56,12 @@ const init = async () => {
 
   server.auth.strategy('simple', 'basic', { validate });
 
-  for (var route of routes.routesFxn(connection)) {
+  for (var route of routes.routesFxn(connection,validate)) {
     server.route(route);
   }
 
   // causes all routes to require authentication
-  // server.auth.default('simple');
+  server.auth.default('simple');
 
   await server.start();
   console.log('Server is running');

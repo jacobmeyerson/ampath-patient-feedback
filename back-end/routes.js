@@ -1,5 +1,7 @@
 'use strict';
+
 const SURVEYFILE = './surveys.json';
+
 // builds a query to insert appropriate number of rows into surveyResponse table
 const surveyResponse_query_constructor = (surveyResponse, surveyEncounterId) => {
   const responseValue_constructor = (surveyEncounterId) => (question) => (answer) =>
@@ -35,7 +37,7 @@ const surveyEncounter_query_constructor = (surveyEncounterInfo) => {
   return surveyEncounter_query;
 };
 
-module.exports = { routesFxn: (connection) => [
+module.exports = { routesFxn: (connection, validate) => [
 {
   method: 'GET',
   path: '/getSurveys',
@@ -75,21 +77,14 @@ module.exports = { routesFxn: (connection) => [
   }
 },
 {
-  method: 'GET',
-  path: '/test',
+  method: 'POST',
+  path: '/validate',
   options: {
     auth: false
   },
-  handler: function(request, h) { 
-    return new Promise(
-      (resolve, reject) => {
-        connection.query(
-          'SELECT * FROM surveyEncounter',
-          (error, rows, _fields) => {
-            resolve(rows);
-          });
-      }
-    );
+  handler: function(request, h) {
+    console.log(request.payload.username); 
+    return validate({},request.payload.username, request.payload.password)
   }
-}   
+}
 ]}
