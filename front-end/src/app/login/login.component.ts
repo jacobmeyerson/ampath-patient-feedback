@@ -9,33 +9,34 @@ import { HttpService } from '../http.service';
 })
 export class LoginComponent {
   showAlert = false;
+  authenticated = false;
 
   constructor(private router: Router, private httpService: HttpService) { }
 
   onLogin(username: string, password: string) {
-    // try {
-      this.httpService.validate({username, password}).subscribe(
-      (response) => console.log(response)
-      );
-    // } catch (error) {
-    //   console.error(error);
-    // }
 
+    const loginCallback = (authenticated) => {
+      if (authenticated) {
+        const base64 = btoa(username + ':' + password);
+        window.sessionStorage.setItem('auth.credentials', base64);
+      } else {
+        this.showAlert = true;
+      }
+      this.router.navigate(['../location']);
+    };
 
+    this.httpService.validate({username, password}).subscribe(
+      (response) => {
+        loginCallback(response.json().isValid);
+        // this.authenticated = response.json().isValid;
+      }
+    );
 
     // TODO: replace with call to server
-    let authenticated = false;
-    if (username === 'bob') {
-      authenticated = true;
-    }
-
-    if (authenticated) {
-      const base64 = btoa(username + ':' + password);
-      window.sessionStorage.setItem('auth.credentials', base64);
-    } else {
-      this.showAlert = true;
-    }
-    this.router.navigate(['../location']);
+    // let authenticated = false;
+    // if (username === 'bob') {
+    //   authenticated = true;
+    // }
   }
 }
 
