@@ -25,10 +25,9 @@ const server = Hapi.Server({
 const validate = async (_request, username, password) => {
   // var authBuffer = new Buffer(username + ":" + password).toString("base64");
   // var headers = {'Authorization': "Basic " + authBuffer};
-  console.log(username);
   return new Promise(
     (resolve, reject) => {
-      if (username === 'bob') resolve({isValid: true, credentials: {}})
+      if (username === 'jacob') resolve({isValid: true, credentials: {}})
       else resolve({isValid: false, credentials: {}})});
     // when test-amrs is working, comment out above 2 lines, uncomment below lines and authbuffer/header lines
     //   var callback = (error, response, _body) => {

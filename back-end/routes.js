@@ -78,13 +78,22 @@ module.exports = { routesFxn: (connection, validate) => [
 },
 {
   method: 'POST',
-  path: '/validate',
+  path: '/login',
   options: {
     auth: false
   },
   handler: function(request, h) {
-    console.log(request.payload.username); 
     return validate({},request.payload.username, request.payload.password)
+  }
+},
+{
+  method: 'GET',
+  path: '/logout',
+  options: {
+    auth: false
+  },
+  handler: function(request, h) {
+    return 'bob'
   }
 }
 ]}

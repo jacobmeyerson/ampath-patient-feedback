@@ -25,62 +25,10 @@ export class LoginComponent {
       this.router.navigate(['../location']);
     };
 
-    this.httpService.validate({username, password}).subscribe(
+    this.httpService.login({username, password}).subscribe(
       (response) => {
         loginCallback(response.json().isValid);
-        // this.authenticated = response.json().isValid;
       }
     );
-
-    // TODO: replace with call to server
-    // let authenticated = false;
-    // if (username === 'bob') {
-    //   authenticated = true;
-    // }
   }
 }
-
-// if authenticated: window.sessionStorage.setItem(keyName, value);
-// keyName: CREDENTIALS_KEY (they use 'auth.credentials')
-// value: base64, where let base64 = btoa(username + ':' + password);
-
-
-    // const headers = new Headers();
-
-    // const credentials = btoa(username.value + ':' + password.value);
-
-    // headers.append('Authorization', 'Basic ' + credentials);
-
-    // const url = 'https://ngx.ampath.or.ke/test-amrs/ws/rest/v1/session/';
-
-    // const request = this.http.get(url, {
-    //   headers: headers
-    // });
-
-    // request
-    // .subscribe(
-    //   (response: Response) => {
-    //     this.loggedInComplete.emit(true);
-      //   const data = response.json();
-      //   if (data.authenticated) {
-      //     this.loggedInComplete.emit(true);
-      //     this.http.delete(url, {
-      //       headers: headers}); // logs out - according to https://wiki.openmrs.org/display/docs/REST+Web+Services+API+For+Clients
-      // }
-    // });
-
-
-  // ngOnInit () {
-    // const headers = new Headers();
-
-    // const credentials = btoa('john:studio');
-
-    // headers.append('Authorization', 'Basic ' + credentials);
-
-    // const request = this.http.get('http://localhost:8000/reset', {
-    //   headers: headers
-    // });
-    // request.subscribe(
-    //   (response: Response) => console.log('Aunthentication is successful')
-    // );
-  // }
