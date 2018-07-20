@@ -9,7 +9,10 @@ export class HttpService {
         return this.http.get('http://localhost:3000/getSurveys');
     }
     storeSurveys(response) {
-        return this.http.post('http://localhost:3000/storeSurveys', response); // , response);
+        return this.http.post('http://localhost:3000/storeSurveys', response);
+    }
+    validate(response) {
+        return this.http.post('http://localhost:3000/validate', response);
     }
 
 }
