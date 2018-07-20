@@ -138,10 +138,10 @@ const init = async () => {
 
   server.auth.strategy('simple', 'basic', { validate });
 
-  // for (var route in routes.r(connection)) {
-  //   console.log('ROUTE');
-  //   server.route(routes[route]);
-  // }
+  for (var route of routes.r(connection)) {
+    // console.log(route);
+    server.route(route);
+  }
   console.log('hi');
   console.log(routes.r(connection)[0]);
   // server.route(routes.r(connection)[0]);
