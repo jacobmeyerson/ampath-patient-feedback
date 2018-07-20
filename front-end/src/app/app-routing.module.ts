@@ -11,11 +11,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { HomeComponent } from './home/home.component';
 
 
 const appRoutes = [
   {
-    path: '', redirectTo: 'login', pathMatch: 'full'
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login'
   },
   {
     path: 'login', component: LoginComponent

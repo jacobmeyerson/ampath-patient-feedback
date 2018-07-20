@@ -1,3 +1,4 @@
+<router-outlet></router-outlet>
 <!-- TODO: 
   * factor out styling
   * make sure page is correct AMPATh login (image, etc.)
@@ -6,35 +7,41 @@
   Incorrect username or password!
 </div>
 
-<div> 
-  <br><br>
-  <br><br>
-  <br><br>
+<div>
+  <br>
+  <br>
+  <br>
+  <br>
   <!-- TODO: change col-md to be of appropriate sizing upon resizing browser -->
   <div class="col-md-4"></div>
   <div class="col-md-4">
-      <div class="card ">
-      <div class="card-body">
-      <img src="assets/lg.jpg" class="img-responsive" alt="No logo">
-      <br>
-      <form>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <img src="assets/lg.jpg" class="img-responsive" style="width: 15em" alt="No logo">
+        <br>
+        <form>
+            <br>
+            <br>
           <div class="form-group">
-            <label for="exampleInputEmail1">Username</label>
-            <input type="email" class="form-control input-lg" #username aria-describedby="emailHelp" placeholder="Enter Username">
-            <!-- TODO: should it be type e-mail? -->
+            <!-- <label for="exampleInputEmail1">Username</label> -->
+            <input type="text" class="form-control input-lg" #username aria-describedby="emailHelp" placeholder="Enter Username">
+
           </div>
           <br>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <!-- <label for="exampleInputPassword1">Password</label> -->
             <input type="password" class="form-control input-lg" #password placeholder="Password">
           </div>
-    
-          <button type="submit" style="background-color: #428bca; color:white;" class="btn  btn-lg float-right" (click)="onLogin(username.value, password.value)">Submit</button>
-          <br><br>
+          <br>
+          <br>
+
+          <button type="submit" style="background-color: #428bca; color:white;" class="btn  btn-lg pull-right" (click)="onLogin(username.value, password.value)">Login</button>
+          <br>
+          <br>
         </form>
       </div>
-      </div>
+    </div>
   </div>
 
-    <div class="col-md-4"></div>
+  <div class="col-md-4"></div>
 </div>
