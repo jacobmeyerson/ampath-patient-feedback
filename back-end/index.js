@@ -138,12 +138,13 @@ const init = async () => {
 
   server.auth.strategy('simple', 'basic', { validate });
 
-  for (var route in routes) {
-    console.log('ROUTE');
-    server.route(routes[route]);
-  }
+  // for (var route in routes.r(connection)) {
+  //   console.log('ROUTE');
+  //   server.route(routes[route]);
+  // }
   console.log('hi');
-  console.log(routes);
+  console.log(routes.r(connection)[0]);
+  // server.route(routes.r(connection)[0]);
   // causes all routes to require authentication
   // server.auth.default('simple');
   

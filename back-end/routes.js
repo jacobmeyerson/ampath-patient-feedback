@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    routes: [
+    r: (connection) => [
         {
             method: 'GET',
             path: '/test',
@@ -11,17 +11,16 @@ module.exports = {
           
             // options: {auth: 'false'},
             handler: function(request, h) { 
-                return ('bob');
-            //   const query1 = 'SELECT * FROM surveyResponse';
-            //   return new Promise(
-            //     (resolve, reject) => {
-            //       connection.query(
-            //         'SELECT * FROM surveyEncounter; SELECT * FROM surveyResponse',
-            //         (error, rows, _fields) => {
-            //           resolve(rows);
-            //         });
-            //     }
-            //   );
+                // return ('bob');
+              return new Promise(
+                (resolve, reject) => {
+                  connection.query(
+                    'SELECT * FROM surveyEncounter',
+                    (error, rows, _fields) => {
+                      resolve(rows);
+                    });
+                }
+              );
             }
           }
           
