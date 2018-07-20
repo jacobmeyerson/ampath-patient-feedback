@@ -7,6 +7,7 @@ const SURVEYFILE = './surveys.json';
 const Hapi = require('hapi');
 const mysql = require('mysql');
 const request = require('request');
+const routes = require('./routes');
 
 const connection = mysql.createConnection({
   host     : 'localhost',
@@ -124,22 +125,6 @@ server.route({
 });
 
 
-server.route({
-  method: 'GET',
-  path: '/test',
-  handler: function(request, h) { 
-    const query1 = 'SELECT * FROM surveyResponse';
-    return new Promise(
-      (resolve, reject) => {
-        connection.query(
-          'SELECT * FROM surveyEncounter; SELECT * FROM surveyResponse',
-          (error, rows, _fields) => {
-            resolve(rows);
-          });
-      }
-    );
-  }
-});
 
 
 
@@ -153,8 +138,14 @@ const init = async () => {
 
   server.auth.strategy('simple', 'basic', { validate });
 
+  for (var route in routes) {
+    console.log('ROUTE');
+    server.route(routes[route]);
+  }
+  console.log('hi');
+  console.log(routes);
   // causes all routes to require authentication
-  server.auth.default('simple');
+  // server.auth.default('simple');
   
   await server.start();
   console.log('Server is running');
