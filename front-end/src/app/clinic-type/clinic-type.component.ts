@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-clinic-type',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClinicTypeComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private route: Router) { }
 
   ngOnInit() {
   }
 
+  onClick() {
+    this.route.navigate(['welcome']);
+  }
+
 }
+
