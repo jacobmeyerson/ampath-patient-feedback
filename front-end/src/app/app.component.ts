@@ -10,7 +10,6 @@ import { HttpService } from './http.service';
 export class AppComponent {
   constructor(private router: Router, private httpService: HttpService) {}
   onLogout() {
-    // TODO: call server to delete session (see ng2amrs sessionService.deleteSession)
     this.httpService.logout().subscribe();
     window.sessionStorage.removeItem('auth.credentials');
     this.router.navigate(['../login']);
