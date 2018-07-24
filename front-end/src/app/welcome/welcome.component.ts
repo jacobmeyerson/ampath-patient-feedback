@@ -18,7 +18,7 @@ export class WelcomeComponent implements OnInit {
     this.route.navigate(['survey']);
   }
   onCancel() {
-    this.route.navigate(['clinic']);
+    this.route.navigate(['success']);
   }
 
 }
