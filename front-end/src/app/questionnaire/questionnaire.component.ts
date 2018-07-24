@@ -31,7 +31,6 @@ export class QuestionnaireComponent implements OnInit {
       'encounterInfo': encounterInfo,
       'responseInfo': response
     };
-    console.log(toServer);
     // response.surveyId = 5088;
     // response.location = 'test locationBOB';
     // response.date = '2018-07-06';

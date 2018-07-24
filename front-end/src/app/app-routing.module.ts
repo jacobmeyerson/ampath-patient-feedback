@@ -11,7 +11,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
-import { HomeComponent } from './home/home.component';
 import { ClinicTypeComponent } from './clinic-type/clinic-type.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
