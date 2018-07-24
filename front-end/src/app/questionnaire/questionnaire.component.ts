@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Response } from '@angular/http';
-import {Router} from '@angular/router'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-questionnaire',
@@ -11,13 +11,13 @@ import {Router} from '@angular/router'
 export class QuestionnaireComponent implements OnInit {
   json: JSON;
 
-  constructor(private httpService: HttpService, private router: Router) {}
+  constructor(private httpService: HttpService, private router: Router) { }
 
   ngOnInit() {
     this.httpService.getSurveys().subscribe(
       (response: Response) => {
         this.json = response.json().survey;
-    });
+      });
   }
 
   onSurveyDone(response) {
