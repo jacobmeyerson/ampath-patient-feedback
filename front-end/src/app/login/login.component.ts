@@ -8,6 +8,7 @@ import { HttpService } from '../http.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
   showAlert = false;
   authenticated = false;
 

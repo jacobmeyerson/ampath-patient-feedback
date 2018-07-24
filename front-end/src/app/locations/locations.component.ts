@@ -11,7 +11,7 @@ export class LocationsComponent implements OnInit {
   constructor(private router: Router) { }
 
   onSave() {
-    this.router.navigate(['../survey']);
+    this.router.navigate(['../clinic']);
   }
 
   ngOnInit() {

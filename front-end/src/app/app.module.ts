@@ -14,6 +14,10 @@ import { LocationsComponent } from './locations/locations.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { HomeComponent } from './home/home.component';
+import { ClinicTypeComponent } from './clinic-type/clinic-type.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { SuccessComponent } from './success/success.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { AuthGuard } from './auth.guard';
     SurveyEditorComponent,
     QuestionnaireComponent,
     LoginComponent,
-    LocationsComponent
+    LocationsComponent,
+    HomeComponent,
+    ClinicTypeComponent,
+    WelcomeComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,

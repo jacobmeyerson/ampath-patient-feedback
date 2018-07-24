@@ -9,6 +9,11 @@ h1 {
       color: #999;
       margin-bottom: 0;
     }
+    h4 {
+      font-size: 1.2em;
+      color: #999;
+      margin-left: 0;
+    }
   h2 {
     font-size: 2em;
     margin-top: 0;

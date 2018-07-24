@@ -11,17 +11,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { HomeComponent } from './home/home.component';
+import { ClinicTypeComponent } from './clinic-type/clinic-type.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 
 const appRoutes = [
   {
-    path: '', redirectTo: 'login', pathMatch: 'full'
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login'
   },
   {
     path: 'login', component: LoginComponent
   },
   {
     path: 'location', component: LocationsComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'clinic', component: ClinicTypeComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard]
   },
   {
     path: 'survey', component: QuestionnaireComponent, canActivate: [AuthGuard]
