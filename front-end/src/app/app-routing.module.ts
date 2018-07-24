@@ -24,10 +24,10 @@ const appRoutes = [
     redirectTo: 'login'
   },
   {
-    path: 'login', component: LoginComponent
+    path: 'login', component: LoginComponent,canActivate: [AuthGuard]
   },
   {
-    path: 'success', component: SuccessComponent
+    path: 'success', component: SuccessComponent, canActivate: [AuthGuard]
   },
   {
     path: 'location', component: LocationsComponent, canActivate: [AuthGuard]
