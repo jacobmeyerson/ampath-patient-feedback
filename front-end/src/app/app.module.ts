@@ -19,6 +19,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { SuccessComponent } from './success/success.component';
 import { CancelPageComponent } from './cancel-page/cancel-page.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { CancelPageComponent } from './cancel-page/cancel-page.component';
     ClinicTypeComponent,
     WelcomeComponent,
     SuccessComponent,
-    CancelPageComponent
+    CancelPageComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,7 @@ import { CancelPageComponent } from './cancel-page/cancel-page.component';
     AppRoutingModule,
     RouterModule
   ],
-  providers: [HttpService, AuthGuard],
+  providers: [HttpService, AuthGuard,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
