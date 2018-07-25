@@ -23,7 +23,7 @@ export class QuestionnaireComponent implements OnInit {
   onSurveyDone(response) {
     const encounterInfo = {
       'surveyId': 5088,
-      'location': 'test location',
+      'location': 'test location HIIIII',
       'date': '2018-07-06',
       'department': 'test department',
       'clinicalProgramId': 1
