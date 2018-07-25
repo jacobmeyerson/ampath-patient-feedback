@@ -3,7 +3,7 @@
    <div class="input-group" style="margin-left: 1em">      
       <select id="exampleFormControlSelect1">
           <option selected disabled>Select Location</option>
-          <option *ngFor="let location of locationArray">{{ location }}</option>
+          <option *ngFor="let location of locationArray">{{ location.name }}</option>
       </select>
     <span>
         <button type="button" (click)="onSave()" class="btn btn-primary btn-md" >Save</button>

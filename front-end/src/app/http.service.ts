@@ -17,6 +17,11 @@ export class HttpService {
             headers: this.getCredentials()
           });
     }
+    getLocations() {
+        return this.http.get('http://localhost:3000/getLocations', {
+            headers: this.getCredentials()
+          });
+    }
     storeSurveys(response) {
         return this.http.post('http://localhost:3000/storeSurveys', response, {
             headers: this.getCredentials()
