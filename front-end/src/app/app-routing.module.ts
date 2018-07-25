@@ -14,6 +14,7 @@ import { AuthGuard } from './auth.guard';
 import { ClinicTypeComponent } from './clinic-type/clinic-type.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SuccessComponent } from './success/success.component';
+import { CancelPageComponent } from './cancel-page/cancel-page.component';
 
 
 const appRoutes = [
@@ -24,6 +25,9 @@ const appRoutes = [
   },
   {
     path: 'login', component: LoginComponent
+  },
+  {
+    path: 'cancel', component: CancelPageComponent
   },
   {
     path: 'success', component: SuccessComponent
