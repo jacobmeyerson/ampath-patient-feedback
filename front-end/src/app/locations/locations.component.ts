@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./locations.component.css']
 })
 export class LocationsComponent implements OnInit {
+  locationArray: string[];
 
   constructor(private router: Router) { }
 
@@ -15,6 +16,7 @@ export class LocationsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.locationArray = ['testloc1', 'testloc2', 'testloc3'];
   }
 
 }
