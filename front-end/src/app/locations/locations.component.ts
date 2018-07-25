@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpService } from '../http.service';
+import { Response } from '@angular/http';
+
 
 @Component({
   selector: 'app-locations',
@@ -8,13 +11,17 @@ import { Router } from '@angular/router';
 })
 export class LocationsComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private httpservice:HttpService) { }
 
   onSave() {
     this.router.navigate(['../clinic']);
   }
 
   ngOnInit() {
+    this.httpservice.getSurveys().subscribe(
+      (response: Response) => {
+        response = response.json().survey;
+      });
   }
 
 }
