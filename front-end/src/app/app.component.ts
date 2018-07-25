@@ -8,7 +8,7 @@ import { HttpService } from './http.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements DoCheck {
-  showNavbar: Boolean;
+  showNavbar = false;
 
   constructor(private router: Router, private httpService: HttpService) {}
   onLogout() {
@@ -19,8 +19,6 @@ export class AppComponent implements DoCheck {
     const credentials = sessionStorage.getItem('auth.credentials');
     if (credentials) {
       this.showNavbar = true;
-    } else {
-      this.showNavbar = false;
     }
   }
 }
