@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-clinic-type',
@@ -9,9 +9,10 @@ import {Router} from '@angular/router';
 export class ClinicTypeComponent implements OnInit {
 
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe((params) => console.log(params.location));
   }
 
   onClick() {

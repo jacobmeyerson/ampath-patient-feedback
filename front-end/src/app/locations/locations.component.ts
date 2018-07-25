@@ -14,7 +14,7 @@ export class LocationsComponent implements OnInit {
   constructor(private router: Router, private httpService: HttpService) {}
 
   onSave(location) {
-    console.log(location);
+    // console.log(location);
     // get uuid based on location
     const uuid = location;
     // route to appropriate url
