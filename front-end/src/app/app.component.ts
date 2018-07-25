@@ -14,7 +14,6 @@ export class AppComponent implements DoCheck {
   onLogout() {
     this.httpService.logout().subscribe();
     window.sessionStorage.removeItem('auth.credentials');
-    this.router.navigate(['../login']);
   }
   ngDoCheck() {
     const credentials = sessionStorage.getItem('auth.credentials');
