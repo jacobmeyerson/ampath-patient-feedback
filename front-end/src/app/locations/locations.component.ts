@@ -15,7 +15,10 @@ export class LocationsComponent implements OnInit {
 
   onSave(location) {
     console.log(location);
-    this.router.navigate(['../clinic']);
+    // get uuid based on location
+    const uuid = location;
+    // route to appropriate url
+    this.router.navigate(['../clinic/' + uuid]);
   }
 
   ngOnInit() {

@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
-import { SurveyComponent } from './survey.component';
-import { SurveyEditorComponent } from './survey.editor.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 import { LoginComponent } from './login/login.component';
 import { LocationsComponent } from './locations/locations.component';
@@ -15,7 +11,7 @@ import { ClinicTypeComponent } from './clinic-type/clinic-type.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SuccessComponent } from './success/success.component';
 
-
+// TODO: add a 404 error page
 const appRoutes = [
   {
     path: '',
@@ -32,7 +28,7 @@ const appRoutes = [
     path: 'location', component: LocationsComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'clinic', component: ClinicTypeComponent, canActivate: [AuthGuard]
+    path: 'clinic/:location', component: ClinicTypeComponent, canActivate: [AuthGuard]
   },
   {
     path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard]
