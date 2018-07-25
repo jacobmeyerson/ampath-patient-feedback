@@ -26,7 +26,7 @@ export class LoginComponent {
       this.router.navigate(['../location']);
     };
 
-    this.httpService.login({username, password}).subscribe(
+    this.httpService.login({ username, password }).subscribe(
       (response) => {
         loginCallback(response.json().isValid);
       }

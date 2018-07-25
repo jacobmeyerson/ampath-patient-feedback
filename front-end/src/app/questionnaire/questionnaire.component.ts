@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Response } from '@angular/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-questionnaire',
@@ -10,13 +11,13 @@ import { Response } from '@angular/http';
 export class QuestionnaireComponent implements OnInit {
   json: JSON;
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService, private router: Router) { }
 
   ngOnInit() {
     this.httpService.getSurveys().subscribe(
       (response: Response) => {
         this.json = response.json().survey;
-    });
+      });
   }
 
   onSurveyDone(response) {
@@ -37,6 +38,7 @@ export class QuestionnaireComponent implements OnInit {
     // response.department = 'test department';
     // response.clinicalProgramId = 1;
     this.httpService.storeSurveys(toServer).subscribe();
+    this.router.navigate(['../success']);
   }
 
   // needed for survey editing function (JM thinks)

@@ -13,6 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { ClinicTypeComponent } from './clinic-type/clinic-type.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { SuccessComponent } from './success/success.component';
 
 
 const appRoutes = [
@@ -23,6 +24,9 @@ const appRoutes = [
   },
   {
     path: 'login', component: LoginComponent
+  },
+  {
+    path: 'success', component: SuccessComponent
   },
   {
     path: 'location', component: LocationsComponent, canActivate: [AuthGuard]
