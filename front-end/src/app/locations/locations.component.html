@@ -1,16 +1,13 @@
-<app-navbar></app-navbar>
+
 <div class="container">
     <div class="row">
    <div class="input-group" style="margin-left: 1em">      
-      <select id="exampleFormControlSelect1">
+      <select id="exampleFormControlSelect1" #location>
           <option selected disabled>Select Location</option>
-          <option>Turbo</option>
-          <option>Huruma</option>
-          <option>Chulaimbo</option>
-          <option>Eldoret</option>
-        </select>
+          <option *ngFor="let location of locationArray">{{ location.name }}</option>
+      </select>
     <span>
-        <button type="button" (click)="onSave()" class="btn btn-primary btn-md" >Save</button>
+        <button type="button" (click)="onSave(location.value)" class="btn btn-primary btn-md">Save</button>
     </span>
   </div>
   </div>

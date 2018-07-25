@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpService } from '../http.service';
+import { Response } from '@angular/http';
+
 
 
 @Component({
@@ -8,14 +11,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./locations.component.css']
 })
 export class LocationsComponent implements OnInit {
+  locationArray;
+  constructor(private router: Router, private httpService: HttpService) {}
 
-  constructor(private router: Router,) { }
-
-  onSave() {
-    this.router.navigate(['../clinic']);
+  onSave(location) {
+    // console.log(location);
+    // get uuid based on location
+    const uuid = location;
+    // route to appropriate url
+    this.router.navigate(['../clinic/' + uuid]);
   }
 
   ngOnInit() {
+    this.httpService.getLocations().subscribe(
+      (response: Response) => {
+        this.locationArray = response.json();
+      });
+  }
 
   }
-}
+
