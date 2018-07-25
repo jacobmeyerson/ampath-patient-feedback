@@ -10,24 +10,19 @@ import { Response } from '@angular/http';
   styleUrls: ['./locations.component.css']
 })
 export class LocationsComponent implements OnInit {
-  locationArray;//: string[];
+  locationArray;
+  constructor(private router: Router, private httpService: HttpService) {}
 
-  constructor(private router: Router, private httpService: HttpService) { }
-
-  onSave() {
+  onSave(location) {
+    console.log(location);
     this.router.navigate(['../clinic']);
   }
 
   ngOnInit() {
     this.httpService.getLocations().subscribe(
       (response: Response) => {
-        console.log(response.json());
-        // this.locationArray = [{name: 'bob'}, {name: 'charlie'}];
         this.locationArray = response.json();
       });
-    // this.locationArray = [{name: 'bob'}, {name: 'charlie'}];
-
-    // this.locationArray = ['testloc1', 'testloc2', 'testloc3'];
   }
 
 }
