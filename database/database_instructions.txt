@@ -1,0 +1,24 @@
+Create a mySQL database named patient_feedback2
+
+In backend/index.js, change the 'user' and 'password' field of connection (lines 12 and 13) to be your username and password
+
+Run this in mySQL:
+
+CREATE TABLE `surveyEncounter` (
+ `surveyEncounterId` int(11) unsigned NOT NULL AUTO_INCREMENT,
+ `surveyId` int(11) NOT NULL,
+ `location` text NOT NULL,
+ `date` date NOT NULL,
+ `department` text NOT NULL,
+ `clinicalProgramId` int(11) NOT NULL,
+ PRIMARY KEY (`surveyEncounterId`)
+) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8;
+CREATE TABLE `surveyResponse` (
+ `surveyResponseId` int(11) unsigned NOT NULL AUTO_INCREMENT,
+ `surveyEncounter_surveyEncounterId` int(11) unsigned NOT NULL,
+ `question` text NOT NULL,
+ `answer` text NOT NULL,
+ PRIMARY KEY (`surveyResponseId`),
+ KEY `surveyEncounter_surveyResponse` (`surveyEncounter_surveyEncounterId`),
+ CONSTRAINT `surveyEncounter_surveyResponse` FOREIGN KEY (`surveyEncounter_surveyEncounterId`) REFERENCES `surveyEncounter` (`surveyEncounterId`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8;
