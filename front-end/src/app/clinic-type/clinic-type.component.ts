@@ -9,18 +9,20 @@ import {Router, ActivatedRoute} from '@angular/router';
 export class ClinicTypeComponent implements OnInit {
     model: any = {};
  
-    onSubmit() {
-      this.route.navigate(['welcome']);
-    }
 
-  constructor(private route: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private router: Router,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((params) => console.log(params.location));
+    this.route.params.subscribe((params) => console.log(params.location));
   }
 
   onClick() {
-    this.route.navigate(['welcome']);
+    const clinicType = 'charlie';
+    const surveyId = 1;
+    this.router.navigate([clinicType + '/survey/' + surveyId + '/welcome'],
+                         { relativeTo: this.route }
+                        );
   }
 
 }

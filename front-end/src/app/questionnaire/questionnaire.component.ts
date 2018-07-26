@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Response } from '@angular/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-questionnaire',
@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
 export class QuestionnaireComponent implements OnInit {
   json: JSON;
 
-  constructor(private httpService: HttpService, private router: Router) { }
+  constructor(private httpService: HttpService,
+              private router: Router,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.httpService.getSurveys().subscribe(
@@ -21,29 +23,27 @@ export class QuestionnaireComponent implements OnInit {
   }
 
   onSurveyDone(response) {
-    const encounterInfo = {
-      'surveyId': 5088,
-      'location': 'test location HIIIII',
-      'date': '2018-07-06',
-      'department': 'test department',
-      'clinicalProgramId': 1
-    };
-    const toServer = {
-      'encounterInfo': encounterInfo,
-      'responseInfo': response
-    };
-    // response.surveyId = 5088;
-    // response.location = 'test locationBOB';
-    // response.date = '2018-07-06';
-    // response.department = 'test department';
-    // response.clinicalProgramId = 1;
-    this.httpService.storeSurveys(toServer).subscribe();
-    this.router.navigate(['../success']);
+
+
+    this.route.params.subscribe((params) => {
+      const encounterInfo = {
+        'surveyId': params.surveyId,
+        'location': params.location,
+        'date': '2018-07-06',
+        'department': params.clinicType,
+        'clinicalProgramId': 1
+      };
+      const toServer = {
+        'encounterInfo': encounterInfo,
+        'responseInfo': response
+      };
+      this.httpService.storeSurveys(toServer).subscribe();
+
+    });
+
+    this.router.navigate(['../../../../../success'],
+                         { relativeTo: this.route }
+                        );
   }
 
-  // needed for survey editing function (JM thinks)
-  //  onSurveySaved(survey) {
-  //    console.log('onsurveysaved');
-  //   // this.json = survey;
-  // }
 }
