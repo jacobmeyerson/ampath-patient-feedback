@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -9,16 +9,20 @@ import {Router} from '@angular/router';
 export class WelcomeComponent implements OnInit {
 
 
-  constructor(private route: Router) { }
+  constructor(private router: Router,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
   }
 
   onClick() {
-    this.route.navigate(['survey']);
+    this.router.navigate(['../start'],
+                         { relativeTo: this.route }
+                        );
   }
+
   onCancel() {
-    this.route.navigate(['success']);
+    this.router.navigate(['success']);
   }
 
 }

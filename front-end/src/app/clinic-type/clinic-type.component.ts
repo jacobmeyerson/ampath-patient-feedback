@@ -10,7 +10,7 @@ export class ClinicTypeComponent implements OnInit {
 
 
   constructor(private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.params.subscribe((params) => console.log(params.location));

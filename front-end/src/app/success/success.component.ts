@@ -12,4 +12,8 @@ export class SuccessComponent implements OnInit {
   ngOnInit() {
   }
 
+  onRestart() {
+    console.log('bob');
+  }
+
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Response } from '@angular/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-questionnaire',
@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
 export class QuestionnaireComponent implements OnInit {
   json: JSON;
 
-  constructor(private httpService: HttpService, private router: Router) { }
+  constructor(private httpService: HttpService,
+              private router: Router,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.httpService.getSurveys().subscribe(
@@ -38,7 +40,9 @@ export class QuestionnaireComponent implements OnInit {
     // response.department = 'test department';
     // response.clinicalProgramId = 1;
     this.httpService.storeSurveys(toServer).subscribe();
-    this.router.navigate(['../success']);
+    this.router.navigate(['../../../../../success'],
+                         { relativeTo: this.route }
+                        );
   }
 
   // needed for survey editing function (JM thinks)
