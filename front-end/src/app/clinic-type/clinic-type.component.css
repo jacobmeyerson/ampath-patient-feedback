@@ -1,4 +1,6 @@
 /* AppComponent's private CSS styles */
+#success_message{ display: none;}
+
 h1 {
   font-size: 1.2em;
   color: #999;
