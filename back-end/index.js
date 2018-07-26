@@ -15,7 +15,7 @@ const connection = mysql.createConnection({
 });
 
 const server = Hapi.Server({
-  port: 3000,
+  port: 4000,
   host: 'localhost',
   routes: {
     cors: true
