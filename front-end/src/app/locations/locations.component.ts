@@ -4,6 +4,7 @@ import { HttpService } from '../http.service';
 import { Response } from '@angular/http';
 
 
+
 @Component({
   selector: 'app-locations',
   templateUrl: './locations.component.html',
@@ -32,4 +33,5 @@ export class LocationsComponent implements OnInit {
       });
   }
 
-}
+  }
+

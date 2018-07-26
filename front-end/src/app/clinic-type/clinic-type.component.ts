@@ -8,7 +8,6 @@ import {Router, ActivatedRoute} from '@angular/router';
 })
 export class ClinicTypeComponent implements OnInit {
 
-
   constructor(private router: Router,
               private route: ActivatedRoute) {}
 

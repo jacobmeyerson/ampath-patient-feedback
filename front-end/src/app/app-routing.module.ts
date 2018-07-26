@@ -10,6 +10,7 @@ import { AuthGuard } from './auth.guard';
 import { ClinicTypeComponent } from './clinic-type/clinic-type.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SuccessComponent } from './success/success.component';
+import { CancelPageComponent } from './cancel-page/cancel-page.component';
 
 // TODO: add a 404 error page for incorrect urls
 
@@ -27,6 +28,10 @@ const appRoutes = [
     path: 'location',
     component: LocationsComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'cancel',
+    component: CancelPageComponent
   },
   {
     path: 'location/:location/clinic',
