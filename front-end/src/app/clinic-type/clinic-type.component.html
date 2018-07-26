@@ -4,28 +4,36 @@
       <h3>Please select the clinic that was visited today:</h3>
       <hr>
       <div>
-          <div class="btn-group" data-toggle="buttons" #input2>
-            <label class="btn btn-default">
-              <input type="radio" name="DM" id="edValueRdo1" value="1">DM
-            </label>
-            <label class="btn btn-default">
-              <input type="radio" name="HTN" id="edValueRdo2" value="2">HTN
-            </label>
-            <label class="btn btn-default">
-              <input type="radio" name="HIV" id="edValueRdo3" value="3">HIV
-            </label>
-          </div>
-          <br>
-          <br>
-          <br>
-          <div class="form-group">
-            <button type="button" class="btn btn-primary" (click)="onStart()">Start</button>
-          </div>
-          <div class="btn-group" data-toggle="buttons">
-            <button type="radio" class="btn btn-default">Left</button>
-            <button type="radio" class="btn btn-default">Middle</button>
-            <button type="radio" class="btn btn-default">Right</button>
-          </div>
+        <!-- <div class="btn-group" data-toggle="buttons" #input2>
+          <label class="btn btn-default">
+            <input type="radio" name="DM" id="edValueRdo1" value="1" #option1 >DM
+          </label>
+          <label class="btn btn-default">
+            <input type="radio" name="HTN" id="edValueRdo2" value="2" #option2 >HTN
+          </label>
+          <label class="btn btn-default">
+            <input type="radio" name="HIV" id="edValueRdo3" value="3">HIV
+          </label>
+        </div>
+        <br>
+        <br>
+        <br> -->
+        <div class="input-group" style="margin-left: 1em">      
+          <select id="exampleFormControlSelect1" #location>
+              <option selected disabled>Select Clinic</option>
+              <option>DM</option>
+              <option>HTN</option>
+              <option>HIV</option>
+              <!-- <option *ngFor="let location of locationArray">{{ location.name }}</option> -->
+          </select>
+          <span>
+              <button type="button" (click)="onNext(location.value)" class="btn btn-primary btn-md">Next</button>
+          </span>
+        </div>
+    
+        <!-- <div class="form-group"> -->
+          <!-- <button type="button" class="btn btn-primary" (click)="onStart(input2, option1, option2)">Start</button> -->
+        <!-- </div> -->
     </div>
   </div>
   <br>
