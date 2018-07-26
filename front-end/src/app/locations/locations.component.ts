@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpService } from '../http.service';
 import { Response } from '@angular/http';
 
@@ -11,7 +11,9 @@ import { Response } from '@angular/http';
 })
 export class LocationsComponent implements OnInit {
   locationArray: {'uuid': string, 'name': string}[];
-  constructor(private router: Router, private httpService: HttpService) {}
+  constructor(private router: Router,
+              private httpService: HttpService,
+              private route: ActivatedRoute) {}
 
   onSave(location) {
     let uuid;
@@ -20,7 +22,7 @@ export class LocationsComponent implements OnInit {
         uuid = loc.uuid;
       }
     }
-    this.router.navigate(['../clinic/' + uuid]);
+    this.router.navigate([uuid + '/clinic'], { relativeTo: this.route });
   }
 
   ngOnInit() {

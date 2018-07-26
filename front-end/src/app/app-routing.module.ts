@@ -20,23 +20,33 @@ const appRoutes = [
     redirectTo: 'login'
   },
   {
-    path: 'login', component: LoginComponent
+    path: 'login',
+    component: LoginComponent
   },
   {
-    path: 'success', component: SuccessComponent
+    path: 'location',
+    component: LocationsComponent,
+    canActivate: [AuthGuard],
   },
   {
-    path: 'location', component: LocationsComponent, canActivate: [AuthGuard]
+    path: 'location/:location/clinic',
+    component: ClinicTypeComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path: 'clinic/:location', component: ClinicTypeComponent, canActivate: [AuthGuard]
+    path: 'location/:location/clinic/:clinicId/survey/:surveyId/welcome',
+    component: WelcomeComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard]
+    path: 'location/:location/clinic/:clinicId/survey/:surveyId/start',
+    component: QuestionnaireComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path: 'survey', component: QuestionnaireComponent, canActivate: [AuthGuard]
-  }
+    path: 'location/:location/success',
+    component: SuccessComponent
+  },
 ];
 
 @NgModule({
