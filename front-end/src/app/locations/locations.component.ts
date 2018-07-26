@@ -15,10 +15,12 @@ export class LocationsComponent implements OnInit {
   constructor(private router: Router, private httpService: HttpService) {}
 
   onSave(location) {
-    // console.log(location);
-    // get uuid based on location
-    const uuid = location;
-    // route to appropriate url
+    let uuid;
+    for (const loc of this.locationArray) {
+      if (loc.name === location) {
+        uuid = loc.uuid;
+      }
+    }
     this.router.navigate(['../clinic/' + uuid]);
   }
 
