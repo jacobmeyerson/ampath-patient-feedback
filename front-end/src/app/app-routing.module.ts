@@ -30,6 +30,10 @@ const appRoutes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'cancel',
+    component: CancelPageComponent
+  },
+  {
     path: 'location/:location/clinic',
     component: ClinicTypeComponent,
     canActivate: [AuthGuard]
