@@ -15,7 +15,7 @@ export class WelcomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClick() {
+  onStart() {
     this.router.navigate(['../start'],
                          { relativeTo: this.route }
                         );
