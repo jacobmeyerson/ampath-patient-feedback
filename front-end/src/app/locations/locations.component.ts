@@ -10,7 +10,7 @@ import { Response } from '@angular/http';
   styleUrls: ['./locations.component.css']
 })
 export class LocationsComponent implements OnInit {
-  locationArray;
+  locationArray: {'uuid': string, 'name': string}[];
   constructor(private router: Router, private httpService: HttpService) {}
 
   onSave(location) {

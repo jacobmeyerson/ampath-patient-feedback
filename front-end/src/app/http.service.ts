@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
+const BASEURL = 'http://localhost:4000/';
+
 @Injectable()
 export class HttpService {
     constructor(private http: Http) {}
@@ -11,29 +13,28 @@ export class HttpService {
         headers.append('Authorization', 'Basic ' + credentials);
         return headers;
     }
-
     getSurveys() {
-        return this.http.get('http://localhost:3000/getSurveys', {
+        return this.http.get(BASEURL + 'getSurveys', {
             headers: this.getCredentials()
           });
     }
     getLocations() {
-        return this.http.get('http://localhost:3000/getLocations', {
+        return this.http.get(BASEURL + 'getLocations', {
             headers: this.getCredentials()
           });
     }
     storeSurveys(response) {
-        return this.http.post('http://localhost:3000/storeSurveys', response, {
+        return this.http.post(BASEURL + 'storeSurveys', response, {
             headers: this.getCredentials()
           });
     }
     login(response) {
-        return this.http.post('http://localhost:3000/login', response, {
+        return this.http.post(BASEURL + 'login', response, {
             headers: this.getCredentials()
           });
     }
     logout() {
-        return this.http.get('http://localhost:3000/logout', {
+        return this.http.get(BASEURL + 'logout', {
             headers: this.getCredentials()
           });
     }
