@@ -8,13 +8,6 @@ import { Router, ActivatedRoute } from '../../../node_modules/@angular/router';
 })
 export class SuccessComponent {
 
-  constructor(private router: Router,
-              private route: ActivatedRoute) {}
-
-  onRestart() {
-    this.router.navigate(['../clinic'],
-                         { relativeTo: this.route }
-                        );
-  }
+  constructor() {}
 
 }

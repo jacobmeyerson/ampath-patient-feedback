@@ -22,7 +22,9 @@ export class WelcomeComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['cancel']);
+    this.router.navigate(['../../../../../cancel'],
+    { relativeTo: this.route }
+   );
   }
 
 }

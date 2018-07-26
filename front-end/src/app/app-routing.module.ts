@@ -30,10 +30,6 @@ const appRoutes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'cancel',
-    component: CancelPageComponent
-  },
-  {
     path: 'location/:location/clinic',
     component: ClinicTypeComponent,
     canActivate: [AuthGuard]
@@ -52,6 +48,11 @@ const appRoutes = [
     path: 'location/:location/success',
     component: SuccessComponent
   },
+  {
+    path: 'location/:location/cancel',
+    component: CancelPageComponent
+  },
+
 ];
 
 @NgModule({
