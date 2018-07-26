@@ -27,7 +27,7 @@ const validate = async (_request, username, password) => {
   // var headers = {'Authorization': "Basic " + authBuffer};
   return new Promise(
     (resolve, reject) => {
-      if (username === 'jacob') resolve({isValid: true, credentials: {}})
+      if (username === 'sam') resolve({isValid: true, credentials: {}})
       else resolve({isValid: false, credentials: {}})});
     // when test-amrs is working, comment out above 2 lines, uncomment below lines and authbuffer/header lines
     //   var callback = (error, response, _body) => {
