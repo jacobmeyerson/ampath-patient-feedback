@@ -18,6 +18,7 @@ import { ClinicTypeComponent } from './clinic-type/clinic-type.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SuccessComponent } from './success/success.component';
 import { CancelPageComponent } from './cancel-page/cancel-page.component';
+import { ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -32,14 +33,14 @@ import { CancelPageComponent } from './cancel-page/cancel-page.component';
     WelcomeComponent,
     SuccessComponent,
     CancelPageComponent,
-    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   providers: [HttpService, AuthGuard,],
   bootstrap: [AppComponent]

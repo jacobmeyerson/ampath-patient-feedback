@@ -7,7 +7,11 @@ import {Router, ActivatedRoute} from '@angular/router';
   styleUrls: ['./clinic-type.component.css']
 })
 export class ClinicTypeComponent implements OnInit {
-
+    model: any = {};
+ 
+    onSubmit() {
+      this.route.navigate(['welcome']);
+    }
 
   constructor(private route: Router, private activatedRoute: ActivatedRoute) { }
 
