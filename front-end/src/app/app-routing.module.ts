@@ -39,7 +39,7 @@ const appRoutes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'location/:location/clinic/:clinicId/survey/:surveyId/start',
+    path: 'location/:location/clinic/:clinicType/survey/:surveyId/start',
     component: QuestionnaireComponent,
     canActivate: [AuthGuard]
   },

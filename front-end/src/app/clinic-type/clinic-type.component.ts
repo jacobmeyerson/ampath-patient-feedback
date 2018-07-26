@@ -17,9 +17,9 @@ export class ClinicTypeComponent implements OnInit {
   }
 
   onClick() {
-    const clinic = 'bob';
+    const clinicType = 'charlie';
     const surveyId = 1;
-    this.router.navigate([clinic + '/survey/' + surveyId + '/welcome'],
+    this.router.navigate([clinicType + '/survey/' + surveyId + '/welcome'],
                          { relativeTo: this.route }
                         );
   }
