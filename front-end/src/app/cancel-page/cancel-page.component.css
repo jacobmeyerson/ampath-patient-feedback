@@ -43,7 +43,11 @@ hr{
     nav a.active {
       color: #039be5;
     }
-    
+    .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+  }
     
     /*
     Copyright 2017-2018 Google Inc. All Rights Reserved.
