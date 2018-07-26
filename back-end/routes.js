@@ -38,12 +38,24 @@ const surveyEncounter_query_constructor = (surveyEncounterInfo) => {
   return surveyEncounter_query;
 };
 
+const MOCK_LOCATIONS = [{uuid:"08feae7c-1352-11df-a1f1-0026b9348838", name:"Location-1"},
+                        {uuid:"00b47ef5-a29b-40a2-a7f4-6851df8d6532", name:"Location-2"},
+                        {uuid:"79fcf21c-8a00-44ba-9555-dde4dd877c4a", name:"Location-3"},
+                        {uuid:"6cd0b441-d644-487c-8466-5820a73f9ce5", name:"Location-4"}];
+
 module.exports = { routesFxn: (connection, validate) => [
 {
   method: 'GET',
   path: '/getSurveys',
   handler: function(request, h) { 
     return h.file(SURVEYFILE);
+  }
+},
+{
+  method: 'GET',
+  path: '/getLocations',
+  handler: function(request, h) { 
+    return MOCK_LOCATIONS;
   }
 },
 {
