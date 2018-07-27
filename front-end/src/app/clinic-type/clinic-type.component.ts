@@ -13,8 +13,8 @@ export class ClinicTypeComponent {
               private route: ActivatedRoute) {}
 
 
-  onNext() {
-    // console.log(input);
+  onNext(inp) {
+    console.log(inp);
     // console.log(typeof(input));
     // for (let ob in input) {
     //   console.log(ob);
