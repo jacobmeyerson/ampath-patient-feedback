@@ -1,4 +1,4 @@
-Create a mySQL database named patient_feedback2
+Create a mySQL database named patient_feedback
 
 In backend/index.js, change the 'user' and 'password' field of connection (lines 12 and 13) to be your username and password
 
