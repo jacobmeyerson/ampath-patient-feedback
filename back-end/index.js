@@ -1,5 +1,3 @@
-// TODO: sanitize inputs
-
 'use strict';
 
 const Hapi = require('hapi');
