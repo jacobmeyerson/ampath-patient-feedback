@@ -8,8 +8,8 @@ const routes = require('./routes');
 const connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'jacob922',
-  database : 'patient_feedback2'
+  password : '',
+  database : 'patient_feedback'
 });
 
 const server = Hapi.Server({
