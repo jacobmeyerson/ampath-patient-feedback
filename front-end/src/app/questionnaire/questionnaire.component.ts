@@ -23,13 +23,13 @@ export class QuestionnaireComponent implements OnInit {
   }
 
   onSurveyDone(response) {
-
+    const date = new Date().toISOString().slice(0, 10);
 
     this.route.params.subscribe((params) => {
       const encounterInfo = {
         'surveyId': params.surveyId,
         'location': params.location,
-        'date': '2018-07-06',
+        'date': date,
         'department': params.clinicType,
         'clinicalProgramId': 1
       };

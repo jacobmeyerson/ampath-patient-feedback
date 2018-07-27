@@ -17,15 +17,17 @@ export class LocationsComponent implements OnInit {
               private route: ActivatedRoute) {}
 
   onSave(location) {
-    let uuid;
-    for (const loc of this.locationArray) {
-      if (loc.name === location) {
-        uuid = loc.uuid;
+    // console.log(location);
+    if (location !== 'Select Location') {
+      let uuid;
+      for (const loc of this.locationArray) {
+        if (loc.name === location) {
+          uuid = loc.uuid;
+        }
       }
+      this.router.navigate([uuid + '/clinic'], { relativeTo: this.route });
     }
-    this.router.navigate([uuid + '/clinic'], { relativeTo: this.route });
   }
-
   ngOnInit() {
     this.httpService.getLocations().subscribe(
       (response: Response) => {
