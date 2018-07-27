@@ -1,6 +1,6 @@
 AMPATH Patient Feedback
 
-Note: this uses the SurveyJS Module; see the bottom of this file for its Creative Commons license, and see https://surveyjs.io/Home/Licenses for information on SurveyJS licensing.
+Note: this uses the SurveyJS Module; see the bottom of this file for attribution.
 
 Usage
 
@@ -46,5 +46,9 @@ Problems to resolve:
 - Sanitize mySQL inputs (if eventually do free text)
 
 
+SurveyJS Attribution:
 
-This work is licensed under the Creative Commons Attribution-NonCommercial 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+Creator: SurveyJS (https://surveyjs.io/)
+Material cloned from: https://github.com/surveyjs/surveyjs_angular_cli
+License:
+    This work is licensed under the Creative Commons Attribution-NonCommercial 3.0 Unported License. To view a copy of this       license, visit http://creativecommons.org/licenses/by-nc/3.0/ or send a letter to Creative Commons, PO Box 1866, Mountain     View, CA 94042, USA.
