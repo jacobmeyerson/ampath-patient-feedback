@@ -1,5 +1,3 @@
-// TODO: sanitize inputs
-
 'use strict';
 
 const Hapi = require('hapi');
@@ -22,6 +20,11 @@ const server = Hapi.Server({
   }
 });
 
+/*To change to validate against OpenMRS:
+ * Uncomment "authbuffer" and "headers" (Lines 29-30)
+ * Comment out "if (username == 'jacob)... else resolve ..." (Lines 33-34)
+ * Uncomment from "var callback" through the end of validate (Lines 35-47)
+*/
 const validate = async (_request, username, password) => {
   // var authBuffer = new Buffer(username + ":" + password).toString("base64");
   // var headers = {'Authorization': "Basic " + authBuffer};
@@ -29,7 +32,6 @@ const validate = async (_request, username, password) => {
     (resolve, reject) => {
       if (username === 'sam') resolve({isValid: true, credentials: {}})
       else resolve({isValid: false, credentials: {}})});
-    // when test-amrs is working, comment out above 2 lines, uncomment below lines and authbuffer/header lines
     //   var callback = (error, response, _body) => {
     //     if (error) reject(error);
     //     const data = JSON.parse(response.body);

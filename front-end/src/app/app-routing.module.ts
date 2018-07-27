@@ -12,8 +12,6 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { SuccessComponent } from './success/success.component';
 import { CancelPageComponent } from './cancel-page/cancel-page.component';
 
-// TODO: add a 404 error page for incorrect urls
-
 const appRoutes = [
   {
     path: '',

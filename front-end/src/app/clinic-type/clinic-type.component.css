@@ -1,23 +1,21 @@
-/* AppComponent's private CSS styles */
 #success_message{ display: none;}
-
 h1 {
   font-size: 1.2em;
   color: #999;
   margin-bottom: 0;
 }
 h3 {
-    font-size: 1.7em;
-    color: #607D8B;
-    margin-bottom: 0;
-    text-align:left; 
-  }
-  h4 {
-    font-size: 1.2em;
-    color: #999;
-    margin-left: 0;
-    text-align:left; 
-  }
+  font-size: 1.7em;
+  color: #607D8B;
+  margin-bottom: 0;
+  text-align:left; 
+}
+h4 {
+  font-size: 1.2em;
+  color: #999;
+  margin-left: 0;
+  text-align:left; 
+}
 h2 {
   font-size: 2em;
   margin-top: 0;
@@ -45,14 +43,3 @@ nav a.active {
 .button{
   width: 8em;
 }
-
-button{
-  width: 9em;
-}
-
-
-/*
-Copyright 2017-2018 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

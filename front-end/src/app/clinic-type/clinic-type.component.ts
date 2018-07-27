@@ -8,17 +8,12 @@ import {Router, ActivatedRoute} from '@angular/router';
 })
 export class ClinicTypeComponent {
   clinicArray = ['DM', 'HTN', 'HIV'];
-
   constructor(private router: Router,
               private route: ActivatedRoute) {}
-
-
   onNext(clinicType) {
     const surveyId = 1;
     this.router.navigate([clinicType + '/survey/' + surveyId + '/welcome'],
                          { relativeTo: this.route }
                         );
   }
-
 }
-
