@@ -7,18 +7,20 @@ import {Router, ActivatedRoute} from '@angular/router';
   styleUrls: ['./clinic-type.component.css']
 })
 export class ClinicTypeComponent {
+  clinicArray = ['bob', 'charlie', 'david'];
+
   constructor(private router: Router,
               private route: ActivatedRoute) {}
 
 
-  onNext(input) {
-    console.log(input);
-    console.log(typeof(input));
+  onNext() {
+    // console.log(input);
+    // console.log(typeof(input));
     // for (let ob in input) {
     //   console.log(ob);
     //   console.log(input[ob]);
     // }
-
+    const input = 'bob';
     const clinicType = input;
     const surveyId = 1;
     this.router.navigate([clinicType + '/survey/' + surveyId + '/welcome'],
