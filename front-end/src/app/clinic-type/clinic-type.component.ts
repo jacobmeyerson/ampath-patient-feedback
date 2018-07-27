@@ -13,15 +13,15 @@ export class ClinicTypeComponent {
               private route: ActivatedRoute) {}
 
 
-  onNext(inp) {
-    console.log(inp);
+  onNext(clinicType) {
+    // console.log(inp);
     // console.log(typeof(input));
     // for (let ob in input) {
     //   console.log(ob);
     //   console.log(input[ob]);
     // }
-    const input = 'bob';
-    const clinicType = input;
+    // const input = 'bob';
+    // const clinicType = input;
     const surveyId = 1;
     this.router.navigate([clinicType + '/survey/' + surveyId + '/welcome'],
                          { relativeTo: this.route }

@@ -3,33 +3,10 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
       <h3>Please select the clinic that was visited today:</h3>
       <hr>
-      <div>
-        <div class="btn-group" data-toggle="buttons" #input2>
+        <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-default" *ngFor="let clinic of clinicArray" (click)="onNext(clinic)">
-            <input type="radio">{{ clinic }}<!--name="DM" value="1" #option1 id="edValueRdo1" -->
+            <input type="radio">{{ clinic }}
           </label>
         </div>
-        <br>
-        <br>
-        <br>
-        <div class="input-group" style="margin-left: 1em">      
-          <select id="exampleFormControlSelect1" #location>
-              <option selected disabled>Select Clinic</option>
-              <option>DM</option>
-              <option>HTN</option>
-              <option>HIV</option>
-              <!-- <option *ngFor="let location of locationArray">{{ location.name }}</option> -->
-          </select>
-          <span>
-              <button type="button" (click)="onNext(location.value)" class="btn btn-primary btn-md">Next</button>
-          </span>
-        </div>
-    
-        <!-- <div class="form-group"> -->
-          <!-- <button type="button" class="btn btn-primary" (click)="onStart(input2, option1, option2)">Start</button> -->
-        <!-- </div> -->
-    </div>
   </div>
-  <br>
-  <br>
 </div>
