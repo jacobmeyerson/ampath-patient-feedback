@@ -24,7 +24,6 @@ export class QuestionnaireComponent implements OnInit {
 
   onSurveyDone(response) {
     const date = new Date().toISOString().slice(0, 10);
-    // console.log(date);
 
     this.route.params.subscribe((params) => {
       const encounterInfo = {
