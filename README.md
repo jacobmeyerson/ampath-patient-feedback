@@ -1,18 +1,13 @@
-
-
 AMPATH Patient Feedback
 
 Usage
 
 - Clone from GIT
-
 - Set up database:
     - Follow instructions in database/database-instructions.txt
-
 - Set up back end:
     - Navigate to back-end
     - $ node index.js
-
 - Set up front end:
     - Navigate to front-end
     - $ npm install
