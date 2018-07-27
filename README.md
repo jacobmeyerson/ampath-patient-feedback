@@ -1,5 +1,7 @@
 AMPATH Patient Feedback
 
+Note: this uses the SurveyJS Module; see the bottom of this file for its Creative Commons license, and see https://surveyjs.io/Home/Licenses for information on SurveyJS licensing.
+
 Usage
 
 - Clone from GIT
@@ -35,10 +37,6 @@ Problems to resolve:
     - This is because the survey is not currently collecting the program name
 - surveyId in surveyEncounter table is not currently being dynamically updated.
     - This is because there is currently only one survey option.  The surveyId is stored in the “surveyId” field of the back-end/surveys.json file.  To set it dynamically and store it in the database, change the surveyId variable in front-end/src/app/clinic-type/clinic-type.component.ts
-- License for the SurveyJS module
-    - We are using the SurveyJS module:  https://surveyjs.io/Library
-    - AMPATH may need a license to use it commercially:
-    - https://surveyjs.io/Home/Licenses
 - Improve database storage
     - Error management
     - Should only be able to store information about surveys that exist
@@ -46,3 +44,7 @@ Problems to resolve:
     - To change to authorizing against OpenMRS: follow instructions in validate function in back-end/index.js
 - Add 404 error page
 - Sanitize mySQL inputs (if eventually do free text)
+
+
+
+This work is licensed under the Creative Commons Attribution-NonCommercial 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
