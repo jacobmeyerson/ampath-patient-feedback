@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '../../../node_modules/@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-success',

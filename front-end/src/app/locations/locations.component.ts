@@ -3,8 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpService } from '../http.service';
 import { Response } from '@angular/http';
 
-
-
 @Component({
   selector: 'app-locations',
   templateUrl: './locations.component.html',
@@ -17,7 +15,6 @@ export class LocationsComponent implements OnInit {
               private route: ActivatedRoute) {}
 
   onSave(location) {
-    // console.log(location);
     if (location !== 'Select Location') {
       let uuid;
       for (const loc of this.locationArray) {
@@ -34,6 +31,4 @@ export class LocationsComponent implements OnInit {
         this.locationArray = response.json();
       });
   }
-
-  }
-
+}
