@@ -7,7 +7,6 @@ import {Router, ActivatedRoute} from '@angular/router';
   styleUrls: ['./clinic-type.component.css']
 })
 export class ClinicTypeComponent {
-
   constructor(private router: Router,
               private route: ActivatedRoute) {}
 

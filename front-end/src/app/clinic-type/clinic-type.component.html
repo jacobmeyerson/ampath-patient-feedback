@@ -1,26 +1,26 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
-      <h3>Select Clinic Types visited today:</h3>
+      <h3>Please select the clinic that was visited today:</h3>
       <hr>
       <div>
-        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-          <div class="btn-group" data-toggle="buttons">
+          <div class="btn-group" data-toggle="buttons" #input2>
             <label class="btn btn-default">
-              <input type="radio" name="DM" id="edValueRdo1" value="1">DM</label>
+              <input type="radio" name="DM" id="edValueRdo1" value="1">DM
+            </label>
             <label class="btn btn-default">
-              <input type="radio" name="HTN" id="edValueRdo2" value="2">HTN</label>
+              <input type="radio" name="HTN" id="edValueRdo2" value="2">HTN
+            </label>
             <label class="btn btn-default">
-              <input type="radio" name="HIV" id="edValueRdo3" value="3">HIV</label>
+              <input type="radio" name="HIV" id="edValueRdo3" value="3">HIV
+            </label>
           </div>
           <br>
           <br>
           <br>
           <div class="form-group">
-            <button class="btn btn-primary" (click)="onStart()">Start</button>
+            <button type="button" class="btn btn-primary" (click)="onStart()">Start</button>
           </div>
-        </form>
-      </div>
     </div>
   </div>
   <br>
