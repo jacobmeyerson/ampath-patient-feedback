@@ -1,9 +1,4 @@
-p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-li.li1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-li.li2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-ul.ul1 {list-style-type: disc}
-ul.ul2 {list-style-type: hyphen}
+
 
 AMPATH Patient Feedback
 
