@@ -39,5 +39,6 @@ nav a.active {
   color: #039be5;
 }
 .button{
-  width: 9em;
+  line-height: 0.8em; /* <- changed this */
+  box-sizing: border-box;
 }
