@@ -44,3 +44,9 @@ nav a.active {
   line-height: 0.8em; /* <- changed this */
   box-sizing: border-box;
 }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
