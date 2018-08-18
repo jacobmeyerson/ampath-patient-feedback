@@ -1,0 +1,22 @@
+version: '2' 
+
+
+services:
+  angular: 
+    build: front-end 
+    ports:
+      - "4200:80"
+
+  hapi: 
+    build: back-end 
+    ports:
+      - "4000:3000"
+    links:
+      - database
+
+  database: 
+    image: mysql:5 
+    ports:
+      - "3306:3306" 
+    environment:
+      MYSQL_ROOT_PASSWORD: "samuel600"

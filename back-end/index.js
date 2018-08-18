@@ -8,7 +8,7 @@ const routes = require('./routes');
 const connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : '',
+  password : 'samuel600',
   database : 'patient_feedback2'
 });
 
