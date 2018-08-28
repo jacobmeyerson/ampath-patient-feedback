@@ -6,14 +6,15 @@ const request = require('request');
 const routes = require('./routes');
 
 const connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'samuel600',
-  database : 'patient_feedback2'
+  user: 'root',
+  password: 'root',
+  host: 'db',
+  port: '3306',
+  database: 'patient_feedback2'
 });
 
 const server = Hapi.Server({
-  port: 4000,
+  port: 3000,
   host: 'localhost',
   routes: {
     cors: true

@@ -4,20 +4,27 @@ version: '2'
 services:
   angular: 
     build: front-end 
+    links:
+      - hapi
     ports:
-      - "4200:80"
+      - "4200:4200"
+    
+  db:
+    image: mysql:5.7
+    ports:
+      - "32000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
 
   hapi: 
-    build: back-end 
-    ports:
-      - "4000:3000"
+    build: back-end
     links:
-      - database
-
-  database: 
-    image: mysql:5 
+      - db
     ports:
-      - "3306:3306" 
-    environment:
-      MYSQL_ROOT_PASSWORD: "samuel600"
-      MYSQL_DATABASE: "patient_feedback2"
+      - "3000:3000"
+    depends_on:
+      - db
+
+
