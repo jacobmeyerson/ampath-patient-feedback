@@ -1,4 +1,3 @@
-
 CREATE DATABASE IF NOT EXISTS patient_feedback2;
 use patient_feedback2;
 

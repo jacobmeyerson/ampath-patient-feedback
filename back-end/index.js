@@ -11,6 +11,10 @@ const connection = mysql.createConnection({
   host: 'db',
   port: '3306',
   database: 'patient_feedback2'
+  // host     : 'localhost',
+  // user     : 'root',
+  // password : 'samuel600',
+  // database : 'patient_feedback2'
 });
 
 const server = Hapi.Server({
@@ -49,7 +53,7 @@ const validate = async (_request, username, password) => {
   };
 
 const init = async () => {
-  connection.connect();
+  // connection.connect();
   
   await server.register([
     {plugin: require('hapi-auth-basic')},
