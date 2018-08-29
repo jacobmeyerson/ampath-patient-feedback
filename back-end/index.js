@@ -27,7 +27,7 @@ const server = Hapi.Server({
 
 /*To change to validate against OpenMRS:
  * Uncomment "authbuffer" and "headers" (Lines 29-30)
- * Comment out "if (username == 'jacob)... else resolve ..." (Lines 33-34)
+ * Comment out "if (username == 'worcester)... else resolve ..." (Lines 33-34)
  * Uncomment from "var callback" through the end of validate (Lines 35-47)
 */
 const validate = async (_request, username, password) => {
@@ -53,7 +53,7 @@ const validate = async (_request, username, password) => {
   };
 
 const init = async () => {
-  // connection.connect();
+  connection.connect();
   
   await server.register([
     {plugin: require('hapi-auth-basic')},
