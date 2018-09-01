@@ -1,5 +1,4 @@
-version: '2' 
-
+version: "3.3" 
 
 services:
   angular: 
@@ -8,6 +7,23 @@ services:
       - hapi
     ports:
       - "4200:4200"
+    environment:
+       WAIT_BEFORE_HOSTS: 180
+       WAIT_HOSTS_TIMEOUT: 1
+       WAIT_HOSTS: db:3306
+
+  hapi: 
+    build: back-end
+    links:
+      - db
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+       WAIT_BEFORE_HOSTS: 180
+       WAIT_HOSTS_TIMEOUT: 1
+       WAIT_HOSTS: db:3306
     
   db:
     image: mysql:5.7
@@ -18,13 +34,6 @@ services:
     volumes:
       - ./db:/docker-entrypoint-initdb.d/:ro
 
-  hapi: 
-    build: back-end
-    links:
-      - db
-    ports:
-      - "3000:3000"
-    depends_on:
-      - db
 
 
+      
